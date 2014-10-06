@@ -1,0 +1,145 @@
+﻿@model JBOFarmersMkt.Models.Transaction
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Transaction</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.transactionCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.transactionCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.storeCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.storeCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.category)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.category)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.department)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.department)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.supplier)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.supplier)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.modifiers)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.modifiers)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.subtotal)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.subtotal)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.tax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.tax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.discount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.discount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.total)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.total)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cashier)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cashier)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.register)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.register)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

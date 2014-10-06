@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>JBoss</h1><br />
+                <h2>Jonesborough Farmers Market Sales System</h2>
+            </hgroup>
+            <p>
+                JBoss is a Sales and Product Tracking system designed specifically for the
+                Jonesborough Farmers Market in Jonesborough, Tennessee.  For more information
+                on how to access your sales and product information, please visit our
+                <a href="~/Views/Home/Contact.cshtml">Contact Page</a>
+            </p>
+        </div>
+    </section>
+}
+<h3>Top Selling Items</h3>
+
+<ul id="product-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("Details", "Store",
+            new { id = item.productId})">
+
+                <img alt="@item.description" src="@item.ProductImageUrl" />
+                <span>@item.description</span>
+            </a>
+        </li>
+    }
+</ul>

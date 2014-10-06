@@ -1,0 +1,188 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<JBOFarmersMkt.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@helper TruncateDate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length) 
+    }
+}
+
+<head>
+<title>Sales</title>
+<link rel="stylesheet" type="text/css" href="~/Content/PagedList.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-1.9.0.js"></script>
+
+<script type="text/javascript" language="javascript">
+
+        ///<summary>
+        ///
+        ///  Check-All Function to select all checkboxes for sale items
+        ///  to be deleted.  If checked, all boxes will be checked on
+        ///  current page.  If one box below is unchecked then the "All"
+        ///  selection box will be unchecked.
+        ///
+        ///</summary>
+        ///<remarks>
+        /// Not working properly (6/28/14)
+        ///</remarks>
+        ///
+
+        $(function () {
+            $("#checkAll").click(function () {
+                $("input[name='deleteItems']").attr("checked", this.checked);
+            });
+
+            $("input[name='deleteItems']").click(function () {
+                if ($("input[name='deleteItems']").length == $("input[name='deleteItems']:checked").length) {
+                    $("#checkAll").attr("checked", "checked");
+                }
+                else {
+                    $("#checkAll").removeAttr("checked");
+                }
+            });
+
+            $("#btnSubmit").click(function () {
+                var count = $("input[name='deleteItems']:checked").length;
+                if (count == 0) {
+                    alert("No rows selected");
+                    return false;
+                }
+                else
+                {
+                    return confirm(count + " row(s) will be deleted");
+                }
+            });
+        });
+
+</script>
+
+
+</head>
+<div id="container" style="width:1080px">
+    <div style="width:225px;float:right; border:2px solid black; padding:10px; margin-top:50px">
+        <h2 align="center">Search Options</h2><br /><br />
+        Search By Item Code:
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+
+            <p><input type="text" name="search" style="width:200px" /><input type="submit" value="Search" /></p>
+        }
+
+        Search By Item Name
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+
+            <p><input type="text" name="searchName" style="width:200px" /><input type="submit" value="Search" /></p>
+        }
+
+        Search By Supplier
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+
+            <p><input type="text" name="searchSupplier" style="width:200px" /><input type="submit" value="Search" /></p>
+        }
+
+
+    </div>
+
+    <h2>Products</h2>   
+  @if(Model != null)
+  { 
+     <p>@Html.ActionLink("Create New", "Create")</p>
+        
+        <table>
+            <tr>
+                <th>
+                    Code
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Last Sold
+                </th>
+                <th>
+                    Supplier
+                </th>
+                <th></th>
+            </tr>
+   
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productCode)
+                </td>
+                <td>
+                    @Truncate(item.description, 17)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.unitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @if (item.lastSoldDate != null)
+                    {
+                        @TruncateDate(item.lastSoldDate, 10)
+                    }
+                </td>
+                <td>
+                    @Truncate(item.supplier, 17)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+                </td>
+            </tr>
+        
+        }
+
+    </table>
+    }
+    else
+      {
+       <p>There is no data to display</p>
+      }
+    <div>
+        @if (Model != null)
+        {
+            <p class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</p>
+        }
+    </div>

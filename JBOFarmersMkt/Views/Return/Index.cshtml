@@ -1,0 +1,61 @@
+﻿@model IEnumerable<JBOFarmersMkt.Models.Return>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.returnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.supplier)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.returnDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.supplier)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.returnId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.returnId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.returnId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,132 @@
+﻿@model JBOFarmersMkt.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Customer</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.customerCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.customerCode)
+            @Html.ValidationMessageFor(model => model.customerCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.firstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.firstName)
+            @Html.ValidationMessageFor(model => model.firstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lastName)
+            @Html.ValidationMessageFor(model => model.lastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address)
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address2)
+            @Html.ValidationMessageFor(model => model.address2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.state)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.state)
+            @Html.ValidationMessageFor(model => model.state)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.zip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.zip)
+            @Html.ValidationMessageFor(model => model.zip)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.account)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.account)
+            @Html.ValidationMessageFor(model => model.account)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.notes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.notes)
+            @Html.ValidationMessageFor(model => model.notes)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.username)
+            @Html.ValidationMessageFor(model => model.username)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,127 @@
+﻿@model JBOFarmersMkt.Sale
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Sale</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.transCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.transCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.custId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.custId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.department)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.department)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.category)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.category)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.upc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.storeCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.storeCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.unitPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.unitPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.totalPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.totalPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.discount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.discount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.total)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.total)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.register)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.register)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.supplier)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.supplier)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.saleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

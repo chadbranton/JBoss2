@@ -1,0 +1,44 @@
+﻿@model ICollection<JBOFarmersMkt.Models.UserProfile>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addUser</title>
+</head>
+<body>
+    <h1>Users for:  @TempData["supplier"]</h1>
+    <table>
+        <tr>
+            <th>
+                Username
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete User", "deleteAssignment", new { id = item.UserId, supp = TempData["supplier"] })
+                    </td>
+                </tr>
+            }
+            
+            @Html.ActionLink("Add a new User", "addAssignment", new { supp = TempData["supplier"]  })
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Back to List", "addUser")
+    </p>
+
+
+</body>
+</html>
+

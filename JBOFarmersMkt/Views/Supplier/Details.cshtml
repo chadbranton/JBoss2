@@ -1,0 +1,65 @@
+﻿@model JBOFarmersMkt.Models.Supplier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Supplier</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.city)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.city)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.state)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.state)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+    Authorized Users:
+    @foreach (var user in ViewBag.users)
+    {
+        <div class="display-field">
+            @user
+        </div>
+    }
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.supplierID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

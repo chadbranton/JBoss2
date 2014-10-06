@@ -1,0 +1,43 @@
+﻿@model IEnumerable<JBOFarmersMkt.Models.UserProfile>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addUser</title>
+</head>
+<body>
+    <h1>Add User to:  @TempData["supplier"]</h1>
+    <table>
+        <tr>
+            <th>
+                Username
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add User", "completeAssignment", new { id = item.UserId, supp = TempData["supplier"] })
+
+
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Back to List", "addUser")
+    </p>
+
+
+</body>
+</html>

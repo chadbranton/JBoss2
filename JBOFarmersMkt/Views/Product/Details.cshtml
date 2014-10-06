@@ -1,0 +1,154 @@
+﻿@model JBOFarmersMkt.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <title>Product Details</title>
+    <style>
+        .display-label {
+            font-weight: bold;
+        }
+
+        .display-field {
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.productCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.productCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.department)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.department)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.category)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.category)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.upc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.storeCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.storeCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.unitPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.unitPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.discountable)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.discountable)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.taxable)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.taxable)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inventoryMethod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inventoryMethod)
+    </div>  
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.orderTrigger)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.orderTrigger)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.recommendedOrder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.recommendedOrder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastSoldDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastSoldDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.supplier)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.supplier)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.liabilityItem)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.liabilityItem)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LRT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LRT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductImageUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductImageUrl)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.productId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<JBOFarmersMkt.Models.Department>
+
+<ul id="categories">
+    @foreach (var dept in Model)
+    {
+        <li>
+            @Html.ActionLink(dept.name,
+                "Browse", "Store",
+                new { dept = dept.name }, null)
+    </li>
+    }
+</ul>

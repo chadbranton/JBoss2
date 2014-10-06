@@ -1,0 +1,36 @@
+﻿@model JBOFarmersMkt.Models.Product
+
+@{
+    ViewBag.Title = "Product- " + Model.description;
+}
+
+<h2 align="center">@Model.description</h2>
+
+<p align="center">
+    <img alt="@Model.description" src="@Model.ProductImageUrl" />
+</p>
+
+<div id="album-details" align="center">
+    <p>
+        <em>Department:</em>
+        @Model.department
+    </p>
+    <p>
+        <em>Supplier:</em>
+        @Model.supplier
+    </p>
+    <p>
+        <em>Price:</em>
+        @String.Format("{0:F}", Model.unitPrice)
+    </p>
+    <p>
+        <em>Quantity in Stock:</em>
+        @Model.quantity
+    </p>
+    <p class="button">
+        @Html.ActionLink("Add to cart", "AddToCart",
+                 "ShoppingCart", new { id = Model.productId }, new { @class = "shoppingCart" })
+    </p>
+
+</div>
+

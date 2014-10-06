@@ -1,0 +1,110 @@
+﻿@model JBOFarmersMkt.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.customerCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.customerCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.address2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.address2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.city)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.city)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.state)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.state)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.zip)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.zip)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.account)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.account)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.notes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.username)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

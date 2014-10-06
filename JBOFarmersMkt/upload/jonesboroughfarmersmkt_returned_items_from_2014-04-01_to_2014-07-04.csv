@@ -1,0 +1,7 @@
+Return Record ID,Return Date,Customer Record ID,Item Description,Department,Category,UPC Code,Store Code,Unit Price,Quantity,Total Price,Discount,Total,Cost of Goods Sold,Register Number,Supplier Name
+511407,2014-04-23 17:25:16 -0400,1599065,Apple  Pink Lady,general,general,,400000001753,1.0,1.0,1.0,0.0,1.0,0.0,1,Buffalo Trail Orchard
+551115,2014-05-19 09:45:37 -0400,1998412,Apple  Pink Lady,general,general,,400000001753,1.0,1.0,1.0,0.0,1.0,0.0,1,Buffalo Trail Orchard
+563619,2014-05-27 15:14:04 -0400,1599065,EggsFree Range,general,general,,400000002521,3.5,4.0,14.0,0.0,14.0,0.0,1,Brew and Plow Farm
+563619,2014-05-27 15:14:04 -0400,1599065,"Chicken, Whole Pasture Raised (3.54lbs)",general,general,,400000002231,15.0,5.0,75.0,0.0,75.0,0.0,1,Kany Farm
+563619,2014-05-27 15:14:04 -0400,1599065,Goat cheese chevre style with peach jam,general,general,,400000002651,1.0,5.0,5.0,0.0,5.0,0.0,1,Ziegenwald Dairy
+563619,2014-05-27 15:14:04 -0400,1599065,BreadMultigrain Harvest,general,general,,400000001937,4.8,4.0,19.2,0.0,19.2,0.0,1,Good Fork Farm

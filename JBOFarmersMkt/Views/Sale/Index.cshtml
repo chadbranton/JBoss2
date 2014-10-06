@@ -1,0 +1,169 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<JBOFarmersMkt.Sale>
+
+
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@helper TruncateDate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)
+    }
+}
+
+<head>
+    <title>Sales</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/PagedList.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery-1.9.0.js"></script>
+
+    <script type="text/javascript" language="javascript">
+
+        ///<summary>
+        ///
+        ///  Check-All Function to select all checkboxes for sale items
+        ///  to be deleted.  If checked, all boxes will be checked on
+        ///  current page.  If one box below is unchecked then the "All"
+        ///  selection box will be unchecked.
+        ///
+        ///</summary>
+        ///<remarks>
+        /// Not working properly (6/28/14)
+        ///</remarks>
+        ///
+
+        $(function () {
+            $("#checkAll").click(function () {
+                $("input[name='deleteItems']").attr("checked", this.checked);
+            });
+
+            $("input[name='deleteItems']").click(function () {
+                if ($("input[name='deleteItems']").length == $("input[name='deleteItems']:checked").length) {
+                    $("#checkAll").attr("checked", "checked");
+                }
+                else {
+                    $("#checkAll").removeAttr("checked");
+                }
+            });
+
+            $("#btnSubmit").click(function () {
+                var count = $("input[name='deleteItems']:checked").length;
+                if (count == 0) {
+                    alert("No rows selected");
+                    return false;
+                }
+                else
+                {
+                    return confirm(count + " row(s) will be deleted");
+                }
+            });
+        });
+
+    </script>
+
+
+</head>
+
+<h2>Sales</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    @if (Model != null)
+    {
+     <table>
+        <tr>
+            <th>
+                Code
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Qty
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Supplier
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.transCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.supplier)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.saleId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.saleId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.saleId })
+                </td>
+            </tr>
+        }
+    </table>
+    }
+    else
+    {
+        <p>There are no items to display</p>
+    }
+
+<div>
+    @if (Model != null)
+    {
+        <p class="pager">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</p>
+    }
+</div>
+
+
+
+
+
+
+
+

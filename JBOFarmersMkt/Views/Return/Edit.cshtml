@@ -1,0 +1,150 @@
+﻿@model JBOFarmersMkt.Models.Return
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Return</legend>
+
+        @Html.HiddenFor(model => model.returnId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.returnDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.returnDate)
+            @Html.ValidationMessageFor(model => model.returnDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.custId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.custId)
+            @Html.ValidationMessageFor(model => model.custId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.department)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.department)
+            @Html.ValidationMessageFor(model => model.department)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.category)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.category)
+            @Html.ValidationMessageFor(model => model.category)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.upc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.upc)
+            @Html.ValidationMessageFor(model => model.upc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.storeCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.storeCode)
+            @Html.ValidationMessageFor(model => model.storeCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.unitPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.unitPrice)
+            @Html.ValidationMessageFor(model => model.unitPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.quantity)
+            @Html.ValidationMessageFor(model => model.quantity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.totalPrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.totalPrice)
+            @Html.ValidationMessageFor(model => model.totalPrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.discount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.discount)
+            @Html.ValidationMessageFor(model => model.discount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.total)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.total)
+            @Html.ValidationMessageFor(model => model.total)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cost)
+            @Html.ValidationMessageFor(model => model.cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.register)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.register)
+            @Html.ValidationMessageFor(model => model.register)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.supplier)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.supplier)
+            @Html.ValidationMessageFor(model => model.supplier)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

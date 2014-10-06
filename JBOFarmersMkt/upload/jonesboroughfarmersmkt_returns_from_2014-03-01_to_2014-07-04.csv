@@ -1,0 +1,4 @@
+Return Record ID,Return Date,Customer Record ID,Register Number,Total Price,Discount,Total Tax,Total,Tendered Amount,Change Returned,Payment Type,Card Type,Card Last Four,Receipt Number
+511407,2014-04-23 17:25:16 -0400,1599065,1,1.0,0.0,0.1,1.1,1.1,0.0,credit,VISA,1330,
+551115,2014-05-19 09:45:37 -0400,1998412,1,1.0,0.0,0.1,1.1,1.1,0.0,cash,,,
+563619,2014-05-27 15:14:04 -0400,1599065,1,113.2,0.0,11.04,124.24,124.24,0.0,cash,,,

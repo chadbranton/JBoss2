@@ -1,0 +1,44 @@
+Transaction ID,Transaction Type,Store Code,Item Description,Category,Department,Supplier,Supplier Code,Cost,Price,Quantity,Modifiers,Subtotal,Tax,Discount,Total,Cashier,Time,Register
+123247895,sale,400000001753,Apple  Pink Lady,general,general,Buffalo Trail Orchard,,0.00,1.00,1.0,0.00,1.00,0.10,0.00,1.10,,2014-04-23 17:08:59,Register 1
+127463614,sale,400000002538,EggsFree Range Brown,general,general,Kany Farm,,0.00,4.00,5.0,0.00,20.00,1.95,0.00,21.95,,2014-04-30 19:55:13,Register 1
+127463621,sale,400000001746,Apple  Fuji,general,general,Buffalo Trail Orchard,,0.00,1.00,2.0,0.00,2.00,0.20,0.00,2.20,,2014-04-30 19:56:16,Register 1
+127463631,sale,400000001890,Blueberries  Frozen,general,general,Buffalo Trail Orchard,,0.00,6.00,5.0,0.00,30.00,2.93,0.00,32.93,,2014-05-05 13:40:26,Register 1
+127464240,sale,400000001883,Blackberries  Frozen (Tame),general,general,Buffalo Trail Orchard,,0.00,3.75,3.0,0.00,11.25,1.10,0.00,12.35,,2014-05-05 13:43:53,Register 1
+131016214,sale,400000001753,Apple  Pink Lady,general,general,Buffalo Trail Orchard,,0.00,1.00,2.0,0.00,2.00,0.20,0.00,2.20,,2014-05-15 12:46:53,Register 1
+131016214,sale,400000001883,Blackberries  Frozen (Tame),general,general,Buffalo Trail Orchard,,0.00,3.75,8.0,0.00,30.00,2.93,0.00,32.93,,2014-05-15 12:46:53,Register 1
+131084317,sale,400000003122,PorkApplewood Smoked Ham Hocks (uncured),general,general,Sentelles Homemade Sausage Co.,,0.00,3.00,2.0,0.00,6.00,0.59,0.00,6.59,,2014-05-15 14:50:59,Register 1
+131084317,sale,400000003146,"PorkBreakfast Sausage (Hot, Frozen)",general,general,Sentelles Homemade Sausage Co.,,0.00,5.00,5.0,0.00,25.00,2.44,0.00,27.44,,2014-05-15 14:50:59,Register 1
+132722550,sale,400000001753,Apple  Pink Lady,general,general,Buffalo Trail Orchard,,0.00,1.00,1.0,0.00,1.00,0.10,0.00,1.10,,2014-05-19 08:49:25,Register 1
+132722555,sale,400000002026,CakeApple Cake,general,general,Carols Cakes (formerly Two Sisters Baking),,0.00,0.60,2.0,0.00,1.20,0.12,0.00,1.32,,2014-05-19 08:56:50,Register 1
+132722575,sale,400000003115,Pork Sliced Applewood Smoked Bacon,general,general,Sentelles Homemade Sausage Co.,,0.00,5.25,5.0,0.00,26.25,2.43,1.31,27.37,,2014-05-19 09:47:18,Register 1
+132722582,sale,400000002156,Chicken Gizzards non GMO,general,general,JEM Farm,,0.00,2.00,6.0,0.00,12.00,1.17,0.00,13.17,,2014-05-19 09:48:59,Register 1
+132722582,sale,400000002170,Chicken Livers,general,general,JEM Farm,,0.00,2.00,5.0,0.00,10.00,0.92,0.60,10.32,,2014-05-19 09:48:59,Register 1
+132722582,sale,400000002187,Chicken Necks  non GMO,general,general,JEM Farm,,0.00,2.50,5.0,0.00,12.50,1.22,0.00,13.72,,2014-05-19 09:48:59,Register 1
+132722582,sale,400000002538,EggsFree Range Brown,general,general,Kany Farm,,0.00,4.00,12.0,0.00,48.00,4.68,0.00,52.68,,2014-05-19 09:48:59,Register 1
+132722597,sale,400000001883,Blackberries  Frozen (Tame),general,general,Buffalo Trail Orchard,,0.00,3.75,5.0,0.00,18.75,1.83,0.00,20.58,,2014-05-19 10:00:18,Register 1
+132722600,sale,400000002231,"Chicken, Whole Pasture Raised (3.54lbs)",general,general,Kany Farm,,0.00,15.00,2.0,0.00,30.00,2.93,0.00,32.93,,2014-05-19 10:07:25,Register 1
+132722605,sale,400000001760,Apples  Dried,general,general,Buffalo Trail Orchard,,0.00,0.75,2.0,0.00,1.50,0.15,0.00,1.65,,2014-05-19 10:35:11,Register 1
+132723247,sale,400000001883,Blackberries  Frozen (Tame),general,general,Buffalo Trail Orchard,,0.00,3.75,5.0,0.00,18.75,1.83,0.00,20.58,,2014-05-19 16:20:02,Register 1
+132723445,sale,400000001890,Blueberries  Frozen,general,general,Buffalo Trail Orchard,,0.00,6.00,6.0,0.00,36.00,3.51,0.00,39.51,,2014-05-19 16:20:30,Register 1
+132723636,sale,400000003320,Uncured Ham,general,general,JEM Farm,,0.00,36.00,5.0,0.00,180.00,17.55,0.00,197.55,,2014-05-19 16:20:58,Register 1
+135625022,sale,400000001784,BeefChuck Roast,general,general,Shiny C Farm,,0.00,5.99,2.0,0.00,11.98,1.17,0.00,13.15,,2014-05-27 14:36:19,Register 1
+135625022,sale,400000002446,CookiesBreakfast Cookies,general,general,Carols Cakes (formerly Two Sisters Baking),,0.00,1.00,5.0,0.00,5.00,0.49,0.00,5.49,,2014-05-27 14:36:19,Register 1
+135625022,sale,400000003122,PorkApplewood Smoked Ham Hocks (uncured),general,general,Sentelles Homemade Sausage Co.,,0.00,3.00,5.0,0.00,15.00,1.46,0.00,16.46,,2014-05-27 14:36:19,Register 1
+135625671,sale,400000002521,EggsFree Range,general,general,Brew and Plow Farm,,0.00,3.50,4.0,0.00,14.00,1.37,0.00,15.37,,2014-05-27 14:37:41,Register 1
+135625671,sale,400000002231,"Chicken, Whole Pasture Raised (3.54lbs)",general,general,Kany Farm,,0.00,15.00,5.0,0.00,75.00,7.31,0.00,82.31,,2014-05-27 14:37:41,Register 1
+135625671,sale,400000002651,Goat cheese chevre style with peach jam,general,general,Ziegenwald Dairy,,0.00,1.00,5.0,0.00,5.00,0.49,0.00,5.49,,2014-05-27 14:37:41,Register 1
+135625671,sale,400000001937,BreadMultigrain Harvest,general,general,Good Fork Farm,,0.00,4.80,4.0,0.00,19.20,1.87,0.00,21.07,,2014-05-27 14:37:41,Register 1
+135625947,sale,400000001975,BreadWoodfired Sourdough Rye and Swiss,general,general,Peacock Artisan Breads,,0.00,6.66,6.0,0.00,39.96,3.90,0.00,43.86,,2014-05-27 14:38:15,Register 1
+135625947,sale,400000001920,BreadCranberry Walnut,general,general,Peacock Artisan Breads,,0.00,6.40,5.0,0.00,32.00,3.12,0.00,35.12,,2014-05-27 14:38:15,Register 1
+135626372,sale,400000002965,Pet treats  Baked Dog TreatsBeefy Treats,general,general,SHEEK TREATS for PETS,,0.00,1.00,2.0,0.00,2.00,0.20,0.00,2.20,,2014-05-27 14:39:05,Register 1
+135626372,sale,400000002941,Pet treats  Baked Cat TreatsChicken Treats,general,general,SHEEK TREATS for PETS,,0.00,1.00,6.0,0.00,6.00,0.59,0.00,6.59,,2014-05-27 14:39:05,Register 1
+135626562,sale,400000001814,BeefLiver,general,general,Shiny C Farm,,0.00,1.98,2.0,0.00,3.96,0.39,0.00,4.35,,2014-05-27 14:39:30,Register 1
+135642903,sale,400000003344,Monkey Pickles,general,general,Amazon Farms,"",0.20,0.99,1.0,0.00,0.99,0.10,0.00,1.09,,2014-05-27 15:12:02,Register 1
+135642903,sale,400000003030,Pet treats  Baked Dog TreatsPumpkin Stix,general,general,SHEEK TREATS for PETS,,0.00,1.00,1.0,0.00,1.00,0.10,0.00,1.10,,2014-05-27 15:12:02,Register 1
+135642903,sale,400000003061,Pet treats  Baked Pet TreatsDoggie Birthday Cake,general,general,SHEEK TREATS for PETS,,0.00,10.00,6.0,0.00,60.00,5.85,0.00,65.85,,2014-05-27 15:12:02,Register 1
+511407,return,400000001753,Apple  Pink Lady,general,general,Buffalo Trail Orchard,,-0.00,-1.00,1.0,-0.00,-1.00,-0.10,-0.00,-1.10,,2014-04-23 17:25:16,Register 1
+551115,return,400000001753,Apple  Pink Lady,general,general,Buffalo Trail Orchard,,-0.00,-1.00,1.0,-0.00,-1.00,-0.10,-0.00,-1.10,,2014-05-19 09:45:37,Register 1
+563619,return,400000002521,EggsFree Range,general,general,Brew and Plow Farm,,-0.00,-3.50,4.0,-0.00,-14.00,-1.37,-0.00,-15.37,,2014-05-27 15:14:04,Register 1
+563619,return,400000002231,"Chicken, Whole Pasture Raised (3.54lbs)",general,general,Kany Farm,,-0.00,-15.00,5.0,-0.00,-75.00,-7.31,-0.00,-82.31,,2014-05-27 15:14:04,Register 1
+563619,return,400000002651,Goat cheese chevre style with peach jam,general,general,Ziegenwald Dairy,,-0.00,-1.00,5.0,-0.00,-5.00,-0.49,-0.00,-5.49,,2014-05-27 15:14:04,Register 1
+563619,return,400000001937,BreadMultigrain Harvest,general,general,Good Fork Farm,,-0.00,-4.80,4.0,-0.00,-19.20,-1.87,-0.00,-21.07,,2014-05-27 15:14:04,Register 1

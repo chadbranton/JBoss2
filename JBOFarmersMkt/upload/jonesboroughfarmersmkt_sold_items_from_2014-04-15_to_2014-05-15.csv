@@ -1,0 +1,6 @@
+Sale Record ID,Sale Date,Customer Record ID,Item Description,Department,Category,UPC Code,Store Code,Unit Price,Quantity,Total Price,Discount,Total,Cost of Goods Sold,Register Number,Supplier Name
+123247895,2014-04-23 17:08:59 -0400,1599065,Apple  Pink Lady,general,general,,400000001753,1.0,1.0,1.0,0.0,1.0,0.0,1,Buffalo Trail Orchard
+127463614,2014-04-30 19:55:13 -0400,1599065,EggsFree Range Brown,general,general,,400000002538,4.0,5.0,20.0,0.0,20.0,0.0,1,Kany Farm
+127463621,2014-04-30 19:56:16 -0400,1633404,Apple  Fuji,general,general,,400000001746,1.0,2.0,2.0,0.0,2.0,0.0,1,Buffalo Trail Orchard
+127463631,2014-05-05 13:40:26 -0400,1599065,Blueberries  Frozen,general,general,,400000001890,6.0,5.0,30.0,0.0,30.0,0.0,1,Buffalo Trail Orchard
+127464240,2014-05-05 13:43:53 -0400,1599065,Blackberries  Frozen (Tame),general,general,,400000001883,3.75,3.0,11.25,0.0,11.25,0.0,1,Buffalo Trail Orchard

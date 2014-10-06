@@ -1,0 +1,16 @@
+﻿@model IEnumerable<JBOFarmersMkt.Models.Product>
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+<h2>Browse for Department: @ViewBag.Department</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.description, "Details", new { id = item.productId })</li>
+    }
+
+</ul>
+
