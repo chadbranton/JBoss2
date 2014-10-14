@@ -9,6 +9,7 @@ using JBOFarmersMkt.Models;
 using JBOFarmersMkt.Context;
 using PagedList;
 using PagedList.Mvc;
+using System.Data.Entity.Core;
 
 namespace JBOFarmersMkt.Controllers
 {

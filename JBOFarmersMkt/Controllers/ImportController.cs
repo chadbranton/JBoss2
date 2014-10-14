@@ -12,6 +12,7 @@ using System.Data;
 using System.Data.Entity.Validation;
 using PagedList;
 using PagedList.Mvc;
+using System.Data.Entity.Core;
 
 namespace JBOFarmersMkt.Controllers
 {
