@@ -21,11 +21,11 @@ namespace JBOFarmersMkt
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
-                "~/Scripts/bootstrap.min.js"));
+                "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
-                "~/Content/bootstrap.min.css",
-                "~/Content/bootstrap.theme.min.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/bootstrap-theme.css"));
         }
     }
 }
