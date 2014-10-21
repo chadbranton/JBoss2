@@ -4,12 +4,12 @@
         <li><p class="navbar-text">Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username navbar-link", title = "Manage" })!</p></li>
         <li class="divider"></li>
         <li>
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-text" }))
-        {
-            @Html.AntiForgeryToken()
-            <a class="navbar-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-        }
-            </li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-text" }))
+            {
+                @Html.AntiForgeryToken()
+                <a class="navbar-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        </li>
     </text>
 
 }

@@ -1,34 +1,67 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 @section featured {
     <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>JBoss</h1><br />
-                <h2>Jonesborough Farmers Market Sales System</h2>
-            </hgroup>
-            <p>
+        <div class="row">
+            <header class="col-xs-12 page-header">
+                <h1>JBoss <small>Jonesborough Farmers Market Sales System</small></h1>
+            </header>
+        </div>
+        <div class="row">
+            <p class="lead col-xs-12">
                 JBoss is a Sales and Product Tracking system designed specifically for the
                 Jonesborough Farmers Market in Jonesborough, Tennessee.  For more information
                 on how to access your sales and product information, please visit our
-                <a href="~/Views/Home/Contact.cshtml">Contact Page</a>
+                @Html.ActionLink("Contact page.", "Contact", "Home")
             </p>
         </div>
     </section>
 }
-<h3>Top Selling Items</h3>
 
-<ul id="product-list">
-    @foreach (var item in Model)
-    {
-        <li>
-            <a href="@Url.Action("Details", "Store",
+<section id="top-selling-items">
+    <div class="row">
+        <header class="col-xs-12">
+            <h3>Top Selling Items</h3>
+        </header>
+    </div>
+    <div class="product-list row">
+        @{
+            int thumbnail_count = 0;
+        }
+        @foreach (var item in Model)
+        {
+            thumbnail_count = @thumbnail_count + 1;
+
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <a href="@Url.Action("Details", "Store",
             new { id = item.productId})">
 
-                <img alt="@item.description" src="@item.ProductImageUrl" />
-                <span>@item.description</span>
-            </a>
-        </li>
-    }
-</ul>
+                        <img alt="@item.description" src="@item.ProductImageUrl" />
+                    </a>
+                    <div class="caption">
+                        <h4 class="text-center"><a href="@Url.Action("Details", "Store", new { id = item.productId })">@item.description</a></h4>
+                    </div>
+                </div>
+            </div>
+
+            // The following statements ensure that the thumbnail is responsive.
+            // They work by adding a clearfix div at the end of each "row".
+            // This is determined with the thumbnail_count variable that is incremented each iteration.
+            // This trick is necessary to enable different numbers of columns for different devices because we don't know server side
+            // if the user is on an iPad, iPhone, or Flat Screen TV so we can't programmatically
+            // insert <div class="row"> around each visible row.
+            // It takes advantage of Bootstrap's responsive classes to only show these divs on the appropriate display sizes.
+            // When this isn't used, columns can get severely out of alignment.
+            if (thumbnail_count > 0 && thumbnail_count % 2 == 0)
+            {
+                <div class="clearfix visible-xs">&nbsp;</div>
+            }
+            if (thumbnail_count > 0 && thumbnail_count % 4 == 0)
+            {
+                <div class="clearfix hidden-xs">&nbsp;</div>
+            }
+        }
+    </div>
+</section>
