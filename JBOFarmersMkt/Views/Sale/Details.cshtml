@@ -4,124 +4,144 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<section class="details">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h2>Details</h2>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.description)
+                    </td>
 
-<fieldset>
-    <legend>Sale</legend>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.date)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.transCode)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.transCode)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.quantity)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.quantity)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.date)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.total)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.total)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.custId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.custId)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.unitPrice)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.unitPrice)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.description)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.discount)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.discount)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.department)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.department)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.totalPrice)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.totalPrice)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.category)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.category)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.supplier)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.supplier)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.upc)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.upc)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.custId)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.custId)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.storeCode)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.storeCode)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.transCode)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.transCode)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.unitPrice)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.unitPrice)
-    </div>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.quantity)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.quantity)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.department)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.department)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.totalPrice)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.totalPrice)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.category)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.discount)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.discount)
-    </div>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.upc)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.upc)
+                    </td>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.total)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.total)
-    </div>
+                    <th>
+                        @Html.DisplayNameFor(model => model.storeCode)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.storeCode)
+                    </td>
+                </tr>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.cost)
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.register)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.register)
+                    </td>
+                    <th>&nbsp;</th>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.cost)
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.ActionLink("Back to Sales", "Index")
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.register)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.register)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.supplier)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.supplier)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.saleId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</section>
