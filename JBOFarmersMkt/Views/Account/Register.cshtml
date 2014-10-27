@@ -3,66 +3,96 @@
     ViewBag.Title = "Register";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
+<section class="registrationForm">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title <small>Create a new account.</small></h1>
+        </header>
+    </div>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.firstName)
-                @Html.TextBoxFor(m => m.Customer.firstName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.lastName)
-                @Html.TextBoxFor(m => m.Customer.lastName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.address)
-                @Html.TextBoxFor(m => m.Customer.address)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.city)
-                @Html.TextBoxFor(m => m.Customer.city)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.state)
-                @Html.TextBoxFor(m => m.Customer.state)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.zip)
-                @Html.TextBoxFor(m => m.Customer.zip)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.phone)
-                @Html.TextBoxFor(m => m.Customer.phone)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Customer.email)
-                @Html.TextBoxFor(m => m.Customer.email)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, "Username", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.firstName, "First Name", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.firstName, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.lastName, "Last Name", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.lastName, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.address, "Address", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.address, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.city, "City", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.city, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.state, "State", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.state, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.zip, "Zip", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.zip, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.phone, "Phone", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.phone, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Customer.email, "Email", new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Customer.email, new { @class = "form-control", placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <input type="submit" value="Register" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
