@@ -15,6 +15,10 @@ namespace JBOFarmersMkt
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                        "~/Scripts/jquery.dataTables.js",
+                        "~/Scripts/dataTables.bootstrap.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -26,6 +30,9 @@ namespace JBOFarmersMkt
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/datatables").Include(
+                "~/Content/dataTables.bootstrap.css"));
         }
     }
 }

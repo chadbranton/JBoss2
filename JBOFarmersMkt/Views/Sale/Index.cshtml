@@ -1,7 +1,4 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
-
-@model IPagedList<JBOFarmersMkt.Sale>
+﻿@model IEnumerable<JBOFarmersMkt.Sale>
 
 
 
@@ -45,54 +42,58 @@
             {
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
-                        <tr>
-                            <th>
-                                Code
-                            </th>
-                            <th>
-                                Date
-                            </th>
-                            <th>
-                                Product
-                            </th>
-                            <th class="text-right">
-                                Quantity
-                            </th>
-                            <th class="text-right">
-                                Total
-                            </th>
-                            <th>
-                                Supplier
-                            </th>
-                            <th></th>
-                        </tr>
-                        @foreach (var item in Model)
-                        {
+                        <thead>
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.transCode)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.date)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.description)
-                                </td>
-                                <td class="text-right">
-                                    @Html.DisplayFor(modelItem => item.quantity)
-                                </td>
-                                <td class="text-right">
-                                    @Html.DisplayFor(modelItem => item.total)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.supplier)
-                                </td>
-                                <td class="text-center">
-                                    @Html.ActionLink("Details", "Details", new { id = item.saleId }, new { @class = "btn btn-primary" })
-                                </td>
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Product
+                                </th>
+                                <th class="text-right">
+                                    Quantity
+                                </th>
+                                <th class="text-right">
+                                    Total
+                                </th>
+                                <th>
+                                    Supplier
+                                </th>
+                                <th></th>
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.transCode)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.date)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.description)
+                                    </td>
+                                    <td class="text-right">
+                                        @Html.DisplayFor(modelItem => item.quantity)
+                                    </td>
+                                    <td class="text-right">
+                                        @Html.DisplayFor(modelItem => item.total)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.supplier)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("Details", "Details", new { id = item.saleId }, new { @class = "btn btn-primary" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
                     </table>
                 </div>
             }
@@ -102,20 +103,20 @@
             }
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            @if (Model != null)
-            {
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-            }
-        </div>
-    </div>
 </section>
 
-
-
-
-
-
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            // Use a DataTable for the sales information
+            $("table").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 6 }
+                ],
+                "order": [ 1, 'desc' ]
+            });
+        })
+    </script>
+}
 
 

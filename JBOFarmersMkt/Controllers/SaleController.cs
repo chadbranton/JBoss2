@@ -7,8 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using JBOFarmersMkt.Context;
 using JBOFarmersMkt.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace JBOFarmersMkt.Controllers
 {
@@ -122,19 +120,19 @@ namespace JBOFarmersMkt.Controllers
                     if (search != null && saleQuery != null)
                     {
 
-                        return View(sale.Where(x => x.transCode == search).ToList().ToPagedList(page ?? 1, 10));
+                        return View(sale.Where(x => x.transCode == search).ToList());
 
                     }
 
                     if (searchName != null)
                     {
 
-                        return View(sale.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                        return View(sale.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                     }
 
                     if (saleQuery != null)
                     {
-                        return View(saleQuery.ToList().ToPagedList(page ?? 1, 20));
+                        return View(saleQuery.ToList());
                     }
 
                 }
@@ -218,22 +216,22 @@ namespace JBOFarmersMkt.Controllers
                 ///  
                 if (search != null && saleQuery != null)
                 {
-                    return View(db.Sales.Where(x => x.transCode == search).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(x => x.transCode == search).ToList());
                 }
 
                 if (searchName != null)
                 {
-                    return View(db.Sales.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                 }
 
                 if (searchSupplier != null)
                 {
-                    return View(db.Sales.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList());
                 }
 
                 else
                 {
-                    return View(saleQuery.ToList().ToPagedList(page ?? 1, 20));
+                    return View(saleQuery.ToList());
                 }
 
 
