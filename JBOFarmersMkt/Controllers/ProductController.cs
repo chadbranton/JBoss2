@@ -7,8 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using JBOFarmersMkt.Models;
 using JBOFarmersMkt.Context;
-using PagedList;
-using PagedList.Mvc;
 using System.Data.Entity.Core;
 
 namespace JBOFarmersMkt.Controllers
@@ -123,19 +121,19 @@ namespace JBOFarmersMkt.Controllers
                     if (search != null && productQuery != null)
                     {
 
-                        return View(product.Where(x => x.productCode == search).ToList().ToPagedList(page ?? 1, 10));
+                        return View(product.Where(x => x.productCode == search).ToList());
 
                     }
 
                     if (searchName != null)
                     {
                         
-                        return View(product.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                        return View(product.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                     }
 
                     if (productQuery != null)
                     {
-                        return View(productQuery.ToList().ToPagedList(page ?? 1, 20));
+                        return View(productQuery.ToList());
                     }
 
                 }
@@ -219,22 +217,22 @@ namespace JBOFarmersMkt.Controllers
                 ///  
                 if (search != null && productQuery != null)
                 {
-                    return View(db.Products.Where(x => x.productCode == search).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Products.Where(x => x.productCode == search).ToList());
                 }
 
                 if (searchName != null)
                 {
-                    return View(db.Products.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Products.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                 }
 
                 if (searchSupplier != null)
                 {
-                    return View(db.Products.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Products.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList());
                 }
 
                 else
                 {
-                    return View(productQuery.ToList().ToPagedList(page ?? 1, 20));
+                    return View(productQuery.ToList());
                 }
 
 
@@ -267,112 +265,112 @@ namespace JBOFarmersMkt.Controllers
             return View(product);
         }
 
-        //
-        // GET: /Product/Create
+        ////
+        //// GET: /Product/Create
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        //
-        // POST: /Product/Create
+        ////
+        //// POST: /Product/Create
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(Product product)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Products.Add(product);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(product);
-        }
+        //    return View(product);
+        //}
 
-        //
-        // GET: /Product/Edit/5
+        ////
+        //// GET: /Product/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Product product = db.Products.Find(id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(product);
+        //}
 
-        //
-        // POST: /Product/Edit/5
+        ////
+        //// POST: /Product/Edit/5
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                Product prod = db.Products.Single(p => p.productCode == product.productCode);
-                prod.productCode = product.productCode;
-                prod.description = product.description;
-                prod.department = product.department;
-                prod.category = product.category;
-                prod.upc = product.upc;
-                prod.storeCode = product.storeCode;
-                prod.unitPrice = product.unitPrice;
-                prod.discountable = product.discountable;
-                prod.taxable = product.taxable;
-                prod.inventoryMethod = product.inventoryMethod;
-                prod.quantity = product.quantity;
-                prod.orderTrigger = product.orderTrigger;
-                prod.recommendedOrder = product.recommendedOrder;
-                prod.lastSoldDate = product.lastSoldDate;
-                prod.supplier = product.supplier;
-                prod.liabilityItem = product.liabilityItem;
-                prod.LRT = product.LRT;
-                prod.ProductImageUrl = product.ProductImageUrl;
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (EntityException ex)
-                {
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(Product product)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Product prod = db.Products.Single(p => p.productCode == product.productCode);
+        //        prod.productCode = product.productCode;
+        //        prod.description = product.description;
+        //        prod.department = product.department;
+        //        prod.category = product.category;
+        //        prod.upc = product.upc;
+        //        prod.storeCode = product.storeCode;
+        //        prod.unitPrice = product.unitPrice;
+        //        prod.discountable = product.discountable;
+        //        prod.taxable = product.taxable;
+        //        prod.inventoryMethod = product.inventoryMethod;
+        //        prod.quantity = product.quantity;
+        //        prod.orderTrigger = product.orderTrigger;
+        //        prod.recommendedOrder = product.recommendedOrder;
+        //        prod.lastSoldDate = product.lastSoldDate;
+        //        prod.supplier = product.supplier;
+        //        prod.liabilityItem = product.liabilityItem;
+        //        prod.LRT = product.LRT;
+        //        prod.ProductImageUrl = product.ProductImageUrl;
+        //        try
+        //        {
+        //            db.SaveChanges();
+        //        }
+        //        catch (EntityException ex)
+        //        {
 
-                }
-                //db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(product);
-        }
+        //        }
+        //        //db.Entry(product).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(product);
+        //}
 
-        //
-        // GET: /Product/Delete/5
+        ////
+        //// GET: /Product/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Product product = db.Products.Find(id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(product);
+        //}
 
-        //
-        // POST: /Product/Delete/5
+        ////
+        //// POST: /Product/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Product product = db.Products.Find(id);
+        //    db.Products.Remove(product);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
