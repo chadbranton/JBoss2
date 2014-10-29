@@ -96,22 +96,6 @@
 
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.department)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.department)
-                    </td>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.category)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.category)
-                    </td>
-                </tr>
-
-                <tr>
-                    <th>
                         @Html.DisplayNameFor(model => model.upc)
                     </th>
                     <td>
@@ -133,15 +117,22 @@
                     <td>
                         @Html.DisplayFor(model => model.register)
                     </td>
-                    <th>&nbsp;</th>
-                    <td>&nbsp;</td>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.department)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.department)
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            @Html.ActionLink("Back to Sales", "Index")
+            <p>
+                @Html.ActionLink("Back to Sales", "Index")
+            </p>
         </div>
     </div>
 </section>

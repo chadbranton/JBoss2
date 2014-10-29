@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<JBOFarmersMkt.Sale>
 
-
-
 @{
     ViewBag.Title = "Sales";
 }
@@ -45,22 +43,22 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Code
+                                    @Html.DisplayNameFor(model => model.transCode)
                                 </th>
                                 <th>
-                                    Date
+                                    @Html.DisplayNameFor(model => model.date)
                                 </th>
                                 <th>
-                                    Product
+                                    @Html.DisplayNameFor(model => model.description)
                                 </th>
                                 <th class="text-right">
-                                    Quantity
+                                    @Html.DisplayNameFor(model => model.quantity)
                                 </th>
                                 <th class="text-right">
-                                    Total
+                                    @Html.DisplayNameFor(model => model.total)
                                 </th>
                                 <th>
-                                    Supplier
+                                    @Html.DisplayNameFor(model => model.supplier)
                                 </th>
                                 <th></th>
                             </tr>

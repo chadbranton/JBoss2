@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Store", "Index", "Store")</li>
+                    @*<li>@Html.ActionLink("Store", "Index", "Store")</li>*@
                     <li>@Html.ActionLink("Sales", "Index", "Sale")</li>
 
                     @if (User.Identity.Name == "admin")
@@ -47,7 +47,6 @@
                     }
 
                     <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                    <li>@Html.ActionLink("Returns", "Index", "Return")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 

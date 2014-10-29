@@ -20,10 +20,14 @@ namespace JBOFarmersMkt.Models
         public string description { get; set; }
         public string department { get; set; }
         public string category { get; set; }
+        [DisplayName("UPC")]
         public string upc { get; set; }
+        [DisplayName("Store Code")]
+        [DisplayFormat(DataFormatString = "{0:s}")]
         public string storeCode { get; set; }
 
-        [DisplayName("Price")]        
+        [DisplayName("Price")]       
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal unitPrice { get; set; }
 
         public Boolean discountable { get; set; }
@@ -32,7 +36,7 @@ namespace JBOFarmersMkt.Models
 
         public string inventoryMethod { get; set; }       
 
-        [DisplayName("Qty")]
+        [DisplayName("Quantity")]
         public double quantity { get; set; }
 
         public int orderTrigger { get; set; }
