@@ -7,8 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using JBOFarmersMkt.Context;
 using JBOFarmersMkt.Models;
-using PagedList;
-using PagedList.Mvc;
 
 namespace JBOFarmersMkt.Controllers
 {
@@ -122,19 +120,19 @@ namespace JBOFarmersMkt.Controllers
                     if (search != null && saleQuery != null)
                     {
 
-                        return View(sale.Where(x => x.transCode == search).ToList().ToPagedList(page ?? 1, 10));
+                        return View(sale.Where(x => x.transCode == search).ToList());
 
                     }
 
                     if (searchName != null)
                     {
 
-                        return View(sale.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                        return View(sale.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                     }
 
                     if (saleQuery != null)
                     {
-                        return View(saleQuery.ToList().ToPagedList(page ?? 1, 20));
+                        return View(saleQuery.ToList());
                     }
 
                 }
@@ -218,22 +216,22 @@ namespace JBOFarmersMkt.Controllers
                 ///  
                 if (search != null && saleQuery != null)
                 {
-                    return View(db.Sales.Where(x => x.transCode == search).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(x => x.transCode == search).ToList());
                 }
 
                 if (searchName != null)
                 {
-                    return View(db.Sales.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(p => p.description.ToUpper().Contains(searchName.ToUpper())).ToList());
                 }
 
                 if (searchSupplier != null)
                 {
-                    return View(db.Sales.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList().ToPagedList(page ?? 1, 10));
+                    return View(db.Sales.Where(p => p.supplier.ToUpper().Contains(searchSupplier.ToUpper())).ToList());
                 }
 
                 else
                 {
-                    return View(saleQuery.ToList().ToPagedList(page ?? 1, 20));
+                    return View(saleQuery.ToList());
                 }
 
 
@@ -266,85 +264,85 @@ namespace JBOFarmersMkt.Controllers
             return View(sale);
         }
 
-        //
-        // GET: /Sale/Create
+        //// Sales should only be managed by imports from Shopkeep
+        //// GET: /Sale/Create
 
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        //
-        // POST: /Sale/Create
+        ////
+        //// POST: /Sale/Create
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Sale sale)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Sales.Add(sale);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(Sale sale)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Sales.Add(sale);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(sale);
-        }
+        //    return View(sale);
+        //}
 
-        //
-        // GET: /Sale/Edit/5
+        ////
+        //// GET: /Sale/Edit/5
 
-        public ActionResult Edit(int id = 0)
-        {
-            Sale sale = db.Sales.Find(id);
-            if (sale == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sale);
-        }
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Sale sale = db.Sales.Find(id);
+        //    if (sale == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(sale);
+        //}
 
-        //
-        // POST: /Sale/Edit/5
+        ////
+        //// POST: /Sale/Edit/5
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Sale sale)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sale).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(sale);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(Sale sale)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(sale).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(sale);
+        //}
 
-        //
-        // GET: /Sale/Delete/5
+        ////
+        //// GET: /Sale/Delete/5
 
-        public ActionResult Delete(int id = 0)
-        {
-            Sale sale = db.Sales.Find(id);
-            if (sale == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sale);
-        }
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Sale sale = db.Sales.Find(id);
+        //    if (sale == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(sale);
+        //}
 
-        //
-        // POST: /Sale/Delete/5
+        ////
+        //// POST: /Sale/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Sale sale = db.Sales.Find(id);
-            db.Sales.Remove(sale);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Sale sale = db.Sales.Find(id);
+        //    db.Sales.Remove(sale);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

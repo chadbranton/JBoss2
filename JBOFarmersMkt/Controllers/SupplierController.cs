@@ -94,10 +94,16 @@ namespace JBOFarmersMkt.Controllers
             return View(supplier);
         }
 
+        // View the users currently assigned to the supplier with id
         public ActionResult Users(int id = 0)
         {
             Supplier supplier = db.Suppliers.Find(id);
-            var users = from u in db.UserProfiles where u.Supplier.supplierID == id select u;
+            if (supplier == null)
+            {
+                return HttpNotFound();
+            }
+
+            var users = supplier.users;
             TempData["supplier"] = supplier.name;
 
             if (users == null)
@@ -107,22 +113,33 @@ namespace JBOFarmersMkt.Controllers
             return View(users.ToList());
         }
 
+        // Is this a duplicate of "addAssignment" Chad? 
         public ActionResult addUser(int id)
         {
 
             Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
+            {
+                return HttpNotFound();
+            }
             TempData["supplier"] = supplier.name;
+            TempData["supplierId"] = supplier.supplierID;
             return View(db.UserProfiles.ToList());
         }
 
+        // Add another user to the supplier from the list of all available users
         public ActionResult addAssignment(string supp)
         {
-            Supplier supplier = db.Suppliers.Where(s => s.name == supp).Single();
-            TempData["supplier"] = supplier.name;
+            try
+            {
+                Supplier supplier = db.Suppliers.Where(s => s.name == supp).Single();
+                TempData["supplier"] = supplier.name;
+                TempData["supplierId"] = supplier.supplierID;
+            } catch (Exception e) {
+                return HttpNotFound();
+            }
 
-            var users = from u in db.UserProfiles select u;
-
-            return View(users.ToList());
+            return View(db.UserProfiles.ToList());
         }
 
         

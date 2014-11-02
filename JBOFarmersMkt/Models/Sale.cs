@@ -25,21 +25,27 @@ namespace JBOFarmersMkt
 
         [DisplayName("Item")]
         public string description { get; set; }
+        [DisplayName("Department")]
         public string department { get; set; }
         public string category { get; set; }
+        [DisplayName("UPC")]
         public string upc { get; set; }
+        [DisplayName("Store Code")]
         public string storeCode { get; set; }
 
         [DataType(DataType.Currency)]
+        [DisplayName("Unit Price")]
         public decimal unitPrice { get; set; }
 
-        [DisplayName("Qty")]
+        [DisplayName("Quantity")]
         public double quantity { get; set; }
 
         [DataType(DataType.Currency)]
+        [DisplayName("Unit Price After Discount")]
         public decimal totalPrice { get; set; }
 
         [DataType(DataType.Currency)]
+        [DisplayName("Discount")]
         public decimal discount { get; set; }
 
         [DisplayName("Total")]
@@ -50,6 +56,7 @@ namespace JBOFarmersMkt
         [DataType(DataType.Currency)]
         public decimal cost { get; set; }
 
+        [DisplayName("Register")]
         public int register { get; set; }
 
         [DisplayName("Supplier")]
