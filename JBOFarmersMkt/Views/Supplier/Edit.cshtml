@@ -4,74 +4,80 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<section class="editSupplier">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title <small>Changing supplier</small></h1>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.supplierID)
 
-    <fieldset>
-        <legend>Supplier</legend>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.name, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.name) })
+                        @Html.ValidationMessageFor(model => model.name)
+                    </div>
+                </div>
 
-        @Html.HiddenFor(model => model.supplierID)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.address, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.address, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.address) })
+                        @Html.ValidationMessageFor(model => model.address)
+                    </div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.name)
-            @Html.ValidationMessageFor(model => model.name)
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.city, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.city, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.city) })
+                        @Html.ValidationMessageFor(model => model.city)
+                    </div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.address)
-            @Html.ValidationMessageFor(model => model.address)
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.state, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.state, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.state) })
+                        @Html.ValidationMessageFor(model => model.state)
+                    </div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.city)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.city)
-            @Html.ValidationMessageFor(model => model.city)
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.phone, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.phone, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.phone) })
+                        @Html.ValidationMessageFor(model => model.phone)
+                    </div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.state)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.state)
-            @Html.ValidationMessageFor(model => model.state)
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.email) })
+                        @Html.ValidationMessageFor(model => model.email)
+                    </div>
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phone)
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phone)
-            @Html.ValidationMessageFor(model => model.phone)
-        </div>
+    </div>
+</section>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.email)
-            @Html.ValidationMessageFor(model => model.email)
-        </div>
-       
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

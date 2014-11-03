@@ -4,58 +4,81 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Supplier</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.name)
+<section class="deleteSupplier">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title <small>Removing a supplier</small></h1>
+        </header>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.address)
+    <div class="row">
+        <div class="col-xs-12 alert alert-box alert-danger">Warning: This action is permanent. Proceed with caution.</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.address)
-    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(model => model.name, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.name)
+                        </p>
+                    </div>
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.city)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.city)
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.address, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.address)
+                        </p>
+                    </div>
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.state)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.state)
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.city, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.city)
+                        </p>
+                    </div>
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phone)
-    </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.state, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.state)
+                        </p>
+                    </div>
+                </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.email)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.phone, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.phone)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, new { @class = "col-sm-4 control-label" })
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Html.DisplayFor(model => model.email)
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+</section>

@@ -12,95 +12,81 @@
     </div>
 
     <div class="row">
-        <div class="table-responsive col-xs-12">
-            <table class="table table-striped">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.productCode)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.productCode)
-                    </td>
-                </tr>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.description)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.description)
-                    </td>
-                </tr>
+        <div class="col-xs-12">
+            <dl class="dl-horizontal">
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.quantity)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.quantity)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.productCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.productCode)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.unitPrice)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.unitPrice)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.lastSoldDate)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.lastSoldDate)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.quantity)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.upc)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.upc)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.unitPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.unitPrice)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.storeCode)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.storeCode)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.lastSoldDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.lastSoldDate)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.supplier)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.supplier)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.upc)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.upc)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LRT)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.LRT)
-                    </td>
-                </tr>
-            </table>
+                <dt>
+                    @Html.DisplayNameFor(model => model.storeCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.storeCode)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.supplier)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.supplier)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LRT)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LRT)
+                </dd>
+            </dl>
         </div>
+
+
     </div>
     <div class="row">
         <div class="col-xs-12">
             <p>
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Back to Products", "Index")
             </p>
         </div>
     </div>

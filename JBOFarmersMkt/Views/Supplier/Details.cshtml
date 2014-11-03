@@ -4,62 +4,78 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<section class="details">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title</h1>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
 
-<fieldset>
-    <legend>Supplier</legend>
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.name)
-    </div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.city)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.city)
+                </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.address)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.address)
-    </div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.state)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.state)
+                </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.city)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.city)
-    </div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.phone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.phone)
+                </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.state)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.state)
-    </div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phone)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-    Authorized Users:
-    @foreach (var user in ViewBag.users)
-    {
-        <div class="display-field">
-            @user
+                <dt>
+                    Authorized Users:
+                </dt>
+                <dd>
+                    <ul class="list-unstyled">
+                        @foreach (var user in ViewBag.users)
+                        {
+                            <li>@user</li>
+                        }
+                    </ul>
+                </dd>
+            </dl>
         </div>
-    }
-    
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.supplierID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.supplierID }) |
+                @Html.ActionLink("Back to Suppliers", "Index")
+            </p>
+        </div>
+    </div>
+</section>
+

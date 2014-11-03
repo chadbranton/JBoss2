@@ -12,120 +12,108 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <table class="table table-striped">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.description)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.description)
-                    </td>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.date)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.date)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.date)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.date)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.quantity)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.quantity)
-                    </td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.quantity)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.total)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.total)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.total)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.total)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.unitPrice)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.unitPrice)
-                    </td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.unitPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.unitPrice)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.discount)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.discount)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.discount)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.discount)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.totalPrice)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.totalPrice)
-                    </td>
+                <!--Bootstrap truncates this field automatically. The inline style prevents this behavior.-->
+                <dt style="white-space:normal;">
+                    @Html.DisplayNameFor(model => model.totalPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.totalPrice)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.supplier)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.supplier)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.supplier)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.supplier)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.custId)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.custId)
-                    </td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.custId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.custId)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.transCode)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.transCode)
-                    </td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.transCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.transCode)
+                </dd>
 
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.upc)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.upc)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.upc)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.upc)
-                    </td>
+                <dt>
+                    @Html.DisplayNameFor(model => model.storeCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.storeCode)
+                </dd>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.storeCode)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.storeCode)
-                    </td>
-                </tr>
+                <dt>
+                    @Html.DisplayNameFor(model => model.register)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.register)
+                </dd>
 
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.register)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.register)
-                    </td>
-                    
-                    <th>
-                        @Html.DisplayNameFor(model => model.department)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.department)
-                    </td>
-                </tr>
-            </table>
+                <dt>
+                    @Html.DisplayNameFor(model => model.department)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.department)
+                </dd>
+
+            </dl>
+
         </div>
     </div>
     <div class="row">

@@ -1,48 +1,85 @@
 ﻿@model IEnumerable<JBOFarmersMkt.Models.Supplier>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Suppliers";
 }
 
-<h2>Index</h2>
+<section class="suppliers">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title</h1>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"><p>@Html.ActionLink("New Supplier", "Create", null, new { @class = "btn btn-primary" })</p></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @if (Model != null)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.name)
+                                </th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th></th>
-    </tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.phone)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.email)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.supplierID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.supplierID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.supplierID }) |
-            @Html.ActionLink("Add User", "Users", new {id=item.supplierID})
-        </td>
-    </tr>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.name)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-xs">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.supplierID }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Details", "Details", new { id = item.supplierID }, new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.supplierID }, new { @class = "btn btn-danger" })
+                                            @Html.ActionLink("Add User", "Users", new { id = item.supplierID }, new { @class = "btn btn-default" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p>There is no data to display</p>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts {
+<script type="text/javascript">
+    $(function () {
+        $("table").DataTable({
+            "columnDefs": [
+                { "orderable": false, "targets": [1, 3] }
+            ]
+        });
+    });
+    </script>
 }
-
-</table>
