@@ -205,11 +205,13 @@
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -345,6 +347,18 @@
     <Compile Include="Migrations\201412060410077_Latest.cs" />
     <Compile Include="Migrations\201412060410077_Latest.Designer.cs">
       <DependentUpon>201412060410077_Latest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411081657151_update customer, add UserProfile.cs" />
+    <Compile Include="Migrations\201411081657151_update customer, add UserProfile.Designer.cs">
+      <DependentUpon>201411081657151_update customer, add UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411081756079_update register model to include customer attributes.cs" />
+    <Compile Include="Migrations\201411081756079_update register model to include customer attributes.Designer.cs">
+      <DependentUpon>201411081756079_update register model to include customer attributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411081808334_updated user profile.cs" />
+    <Compile Include="Migrations\201411081808334_updated user profile.Designer.cs">
+      <DependentUpon>201411081808334_updated user profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -513,6 +527,9 @@
     <Content Include="Views\Store\DeptMenu.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\GetUsers.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -621,6 +638,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412060410077_Latest.resx">
       <DependentUpon>201412060410077_Latest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081657151_update customer, add UserProfile.resx">
+      <DependentUpon>201411081657151_update customer, add UserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081756079_update register model to include customer attributes.resx">
+      <DependentUpon>201411081756079_update register model to include customer attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081808334_updated user profile.resx">
+      <DependentUpon>201411081808334_updated user profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
