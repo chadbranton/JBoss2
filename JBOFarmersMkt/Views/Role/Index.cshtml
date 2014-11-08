@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Create Roles</h2>
+
+<div style="text-align: center">
+    @using (Html.BeginForm())
+    {
+        <label>Role Name</label><br />
+        @Html.TextBox("roleName");
+        <br /><br />
+        <input type="submit" value="Add" />
+    }
+</div>
+<div class="row">
+    <div class="col-xs-1">
+        @if (Model != null)
+        {
+            <div class="table-responsive">
+                <table style="text-align:center" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Roles)
+                        {
+                            <tr>
+                                <td>
+                                    @item
+                                </td>
+                                                             
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>There is no data to display</p>
+        }
+    </div>
+</div>
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            // Use a DataTable for product information
+            $("table").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 0 }
+                ],
+                "order": [1, "asc"]
+            })
+        })
+    </script>
+}
+
