@@ -526,6 +526,7 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\GetUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\assignRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
