@@ -42,10 +42,9 @@
                     @if (User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Users", "Index", "User")</li>
-                        <li>@Html.ActionLink("Suppliers", "Index", "Supplier")</li>
-                        <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                        <li>@Html.ActionLink("Suppliers", "Index", "Supplier")</li>                        
                     }
-                    @if (User.IsInRole("Administrator") && User.IsInRole("Vendor"))
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Vendor"))
                     { 
                         <li>@Html.ActionLink("Sales", "Index", "Sale")</li>
                         <li>@Html.ActionLink("Products", "Index", "Product")</li>

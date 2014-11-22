@@ -16,7 +16,8 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/
-        [Authorize(Roles="Administrator")]
+        [Authorize(Roles="Administrator, Vendor")]
+       
         public ActionResult Index()
         {
             return View(db.Suppliers.ToList());
