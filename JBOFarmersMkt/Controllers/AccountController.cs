@@ -81,12 +81,21 @@ namespace JBOFarmersMkt.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                      
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,
+                        new {firstName = model.firstName,
+                             lastName = model.lastName,
+                             address = model.address,
+                             city = model.city,
+                             state = model.state,
+                             zip = model.zip,
+                             email = model.email,
+                             phone = model.phone});
+
+                    //db.addCustomer(model.Customer, model.UserName, new UserProfile { UserName = model.UserName, Supplier = null });
 
                     WebSecurity.Login(model.UserName, model.Password);
 
-                    db.addCustomer(model.Customer, model.UserName);
+                    
 
                     return RedirectToAction("Index", "Home");
                 }
