@@ -1,5 +1,7 @@
 ﻿using CsvHelper;
+using EntityFramework.BulkInsert.Extensions;
 using JBOFarmersMkt.Context;
+using StackExchange.Profiling;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Core;
 using System.IO;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 
 namespace JBOFarmersMkt.Models
@@ -81,7 +84,11 @@ namespace JBOFarmersMkt.Models
             bool error = false;
             Tuple<int, int> results = null;
 
+            var profiler = MiniProfiler.Current;
+
+            using (profiler.Step("Importing From CSV..."))
             using (var context = new JBOContext())
+            using (var transactionScope = new TransactionScope()) // Start a transaction so BulkInsert optimization can be used.
             {
                 switch (type)
                 {
@@ -104,20 +111,29 @@ namespace JBOFarmersMkt.Models
                 }
                 else
                 {
-                    // Something should've been imported.
-                    context.Imports.Add(
-                        new Import
-                        {
-                            contentHash = contentHash,
-                            type = type,
-                            filename = csv.FileName
-                        });
+                    using (profiler.Step("Creating import in context"))
+                    {
+                        // Something should've been imported.
+                        context.Imports.Add(
+                            new Import
+                            {
+                                contentHash = contentHash,
+                                type = type,
+                                filename = csv.FileName
+                            });
+                    }
 
                     // All done. Let's save the changes.
-                    context.SaveChanges();
-
-                    return results;
+                    using (profiler.Step("Save changes"))
+                    {
+                        context.SaveChanges();
+                    }
                 }
+
+                // We made it this far. All must be well.
+                transactionScope.Complete();
+
+                return results;
             }
         }
 
@@ -131,6 +147,9 @@ namespace JBOFarmersMkt.Models
         {
             List<Product> allImportedProducts = new List<Product>();
 
+            var profiler = MiniProfiler.Current;
+            List<int> products;
+
             if (csv != null && csv.Length > 0)
             {
                 var csvReader = new CsvReader(new StreamReader(csv));
@@ -141,34 +160,60 @@ namespace JBOFarmersMkt.Models
                 List<Product> updated = new List<Product>();
                 List<Product> newItems = new List<Product>();
 
-                var products = from p in context.Products select p.productCode;
-                updated = (from p in allImportedProducts where products.Contains(p.productCode) select p).ToList();
-                newItems = (from p in allImportedProducts where !products.Contains(p.productCode) select p).ToList();
-
-                // Add the new items to the context so they will be saved
-                // shortly.
-                context.Products.AddRange(newItems);
-
-                foreach (Product i in updated)
+                using (profiler.Step("Get Product codes"))
                 {
-                    Product prod = context.Products.Single(p => p.productCode == i.productCode);
-                    prod.productCode = i.productCode;
-                    prod.description = i.description;
-                    prod.department = i.department;
-                    prod.category = i.category;
-                    prod.upc = i.upc;
-                    prod.storeCode = i.storeCode;
-                    prod.unitPrice = i.unitPrice;
-                    prod.discountable = i.discountable;
-                    prod.taxable = i.taxable;
-                    prod.inventoryMethod = i.inventoryMethod;
-                    prod.quantity = i.quantity;
-                    prod.orderTrigger = i.orderTrigger;
-                    prod.recommendedOrder = i.recommendedOrder;
-                    prod.lastSoldDate = i.lastSoldDate;
-                    prod.supplier = i.supplier;
-                    prod.liabilityItem = i.liabilityItem;
-                    prod.LRT = i.LRT;
+                    products = (from p in context.Products select p.productCode).ToList();
+                }
+
+                using (profiler.Step("Find updated products"))
+                {
+                    updated = (from p in allImportedProducts where products.Contains(p.productCode) select p).ToList();
+                }
+
+                using (profiler.Step("Find new products"))
+                {
+                    newItems = (from p in allImportedProducts where !products.Contains(p.productCode) select p).ToList();
+                }
+
+                using (profiler.Step("Inserting new products"))
+                {
+                    // We are in a transaction so go ahead and insert the 
+                    // new items with the BulkInsert extension.
+                    context.BulkInsert(newItems);
+                }
+
+                using (profiler.Step("Updating products in context"))
+                {
+                    try
+                    {
+                        context.Configuration.AutoDetectChangesEnabled = false;
+
+                        foreach (Product i in updated)
+                        {
+                            Product prod = context.Products.First(p => p.productCode == i.productCode);
+                            prod.productCode = i.productCode;
+                            prod.description = i.description;
+                            prod.department = i.department;
+                            prod.category = i.category;
+                            prod.upc = i.upc;
+                            prod.storeCode = i.storeCode;
+                            prod.unitPrice = i.unitPrice;
+                            prod.discountable = i.discountable;
+                            prod.taxable = i.taxable;
+                            prod.inventoryMethod = i.inventoryMethod;
+                            prod.quantity = i.quantity;
+                            prod.orderTrigger = i.orderTrigger;
+                            prod.recommendedOrder = i.recommendedOrder;
+                            prod.lastSoldDate = i.lastSoldDate;
+                            prod.supplier = i.supplier;
+                            prod.liabilityItem = i.liabilityItem;
+                            prod.LRT = i.LRT;
+                        }
+                    }
+                    finally
+                    {
+                        context.Configuration.AutoDetectChangesEnabled = true;
+                    }
                 }
 
                 return new Tuple<int, int>(updated.Count, newItems.Count);
@@ -187,17 +232,27 @@ namespace JBOFarmersMkt.Models
         {
             List<Sale> allImportedSales = new List<Sale>();
 
+            var profiler = MiniProfiler.Current;
+
+            List<int> salesCodes;
+
             if (csv != null && csv.Length > 0)
             {
                 var csvReader = new CsvReader(new StreamReader(csv));
                 csvReader.Configuration.RegisterClassMap<SalesClassMap>();
 
-                allImportedSales = csvReader.GetRecords<Sale>().ToList();
+                using (profiler.Step("Parsing csv"))
+                {
+                    allImportedSales = csvReader.GetRecords<Sale>().ToList();
+                }
 
                 //List<Sale> updated = new List<Sale>();
                 List<Sale> newItems = new List<Sale>();
 
-                var salesCodes = context.Sales.Select(s => s.transCode);
+                using (profiler.Step("Getting transaction codes"))
+                {
+                    salesCodes = context.Sales.Select(s => s.transCode).ToList();
+                }
 
                 // Don't update sales like we did in products.
                 // Transaction codes are unique to a transaction.
@@ -207,11 +262,16 @@ namespace JBOFarmersMkt.Models
                 // It is also likely that ShopKeep does not allow changing this data, and we won't
                 // receive transactions that have been changed anyway.
                 //updated = (from s in allImportedSales where salesCodes.Contains(s.transCode) select s).ToList();
-                newItems = (from s in allImportedSales where !salesCodes.Contains(s.transCode) select s).ToList();
+                using (profiler.Step("Finding new sales"))
+                {
+                    newItems = (from s in allImportedSales where !salesCodes.Contains(s.transCode) select s).ToList();
+                }
 
-                // Add the new items to the context so they will be saved
-                // shortly.
-                context.Sales.AddRange(newItems);
+                using (profiler.Step("Inserting sales"))
+                {
+                    // We are in a transaction so go ahead and insert the sales.
+                    context.BulkInsert(newItems);
+                }
 
                 return new Tuple<int, int>(0, newItems.Count);
             }
