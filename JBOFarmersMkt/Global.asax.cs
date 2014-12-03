@@ -1,9 +1,6 @@
 ﻿using JBOFarmersMkt.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Web;
+using StackExchange.Profiling;
+using StackExchange.Profiling.EntityFramework6;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,14 +16,32 @@ namespace JBOFarmersMkt
     {
         protected void Application_Start()
         {
+            // Initialize MiniProfiler for Entity Framework
+            MiniProfilerEF6.Initialize();
+
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+        }
 
+        protected void Application_BeginRequest()
+        {
+            // Setup profiling on local requests. i.e. when running
+            // on a development machine.
+            if (Request.IsLocal)
+            {
+                MiniProfiler.Start();
+            }
+        }
 
+        protected void Application_EndRequest()
+        {
+            // Stop the profiler. MiniProfiler doesn't throw 
+            // an exception if it's null, so a check is unnecessary.
+            MiniProfiler.Stop();
         }
 
         public class SimpleMembershipInitializer

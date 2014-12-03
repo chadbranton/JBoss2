@@ -11,6 +11,7 @@ using System.Data;
 using System.Data.Entity.Validation;
 using System.Data.Entity.Core;
 using JBOFarmersMkt.ViewModels;
+using StackExchange.Profiling;
 
 namespace JBOFarmersMkt.Controllers
 {
@@ -18,16 +19,14 @@ namespace JBOFarmersMkt.Controllers
     {
 
         JBOContext context = new JBOContext();
+        MiniProfiler profiler = MiniProfiler.Current;
 
         //
         // GET: /Import/
 
         public ActionResult Index()
         {
-            // Change this to return lastModifiedDate for product and sales
-            // to save a round trip from the client later
-            //return View(context.Imports
-            //    .ToList());
+
 
             // Get last 5 product hashes
             var productHashes = context.Imports
@@ -60,9 +59,21 @@ namespace JBOFarmersMkt.Controllers
                 .First();
 
             // Send this data to the view for client-side validations
-            ViewBag.hashes = productHashes.Concat(salesHashes).ToArray();
-            ViewBag.lastProductsImportDate = lastProductsImportDate.ToString("s");
-            ViewBag.lastSalesImportDate = lastSalesImportDate.ToString("s");
+            using (profiler.Step("Store validation data in ViewBag"))
+            {
+                using (profiler.Step("Put hashes in ViewBag"))
+                {
+                    ViewBag.hashes = productHashes.Concat(salesHashes).ToArray();
+                }
+                using (profiler.Step("Put last products import date in ViewBag"))
+                {
+                    ViewBag.lastProductsImportDate = lastProductsImportDate.ToString("s");
+                }
+                using (profiler.Step("Put last sales import date in ViewBag"))
+                {
+                    ViewBag.lastSalesImportDate = lastSalesImportDate.ToString("s");
+                }
+            }
 
             return View(new ImportViewModel());
         }
@@ -119,23 +130,13 @@ namespace JBOFarmersMkt.Controllers
                 }
             }
 
-            if (allImportsFailed)
-            {
-                // The submission failed validation.
-                // See here for the ModelState errors incantation:
-                // http://stackoverflow.com/questions/1352948/how-to-get-all-errors-from-asp-net-mvc-modelstate#comment33109172_4934712
-                return Json(new
-                {
-                    success = false,
-                    errors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage)),
-                    details = new List<object> { p, s }
-                });
-            }
-
-            // At least one of the imports succeeded.
+            // Respond. Success will be true if at least one import succeeded.
+            // The errors list should still be checked in case an error for the
+            // other import needs to be displayed.
             return Json(new
             {
-                success = true,
+                success = allImportsFailed ? false : true,
+                errors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage)),
                 details = new List<object> { p, s }
             });
         }

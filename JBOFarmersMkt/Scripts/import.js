@@ -26,7 +26,15 @@
 
     var display_preview = function (preview_element, template, dt_config) {
         return function (data, f) {
-            $(preview_element).html(template({ rows: data, file: f })).find("table").dataTable(dt_config);
+            //$(preview_element).html(template({ rows: data, file: f })).find("table").dataTable(dt_config);
+            // Has the same effect as above but runs twice as fast.
+            // Appears to be due to the expensive effects of "get offsetWidth" when the original
+            // table full of data is visible. Hiding the table reduces the cost to around 10ms.
+            // There's probably still room for optimization on large tables.
+            var t = $(template({ rows: data, file: f })).hide();
+            $(preview_element).html(t);
+            $(t).find("table").dataTable(dt_config);
+            $(preview_element).show().children().show();
         };
     };
 
@@ -238,7 +246,7 @@
                 $(file_input).parse({
                     config: {
                         error: function (error, file) {
-                            console.log("An error occurred with the chosen file: ", error);
+                            //console.log("An error occurred with the chosen file: ", error);
                             handle_error(error.name, error.message);
                         },
                         complete: function (results, file) {
@@ -267,7 +275,7 @@
 
                     // Called when there is an error parsing files
                     error: function (error, file, input_element, reason) {
-                        console.log("Error: ", error, " - ", reason);
+                        //console.log("Error: ", error, " - ", reason);
                         handle_error(error.name, reason);
                     }
                 })
@@ -282,8 +290,28 @@
         var table_template = _.template($("#table-template").html());
         var error_template = _.template($("#error-template").html());
 
-        var reset_product_preview = reset_text_to_default("#product-preview");
-        var reset_sales_preview = reset_text_to_default("#sales-preview");
+        var reset_product_preview = function () {
+            // Store the original text
+            var reset = reset_text_to_default("#product-preview");
+
+            // Return a function that will destroy the DataTable (allows garbage collection)
+            // and reset the text.
+            return function () {
+                $("#product-preview table.dataTable").dataTable({ "bRetrieve": true }).fnDestroy();
+                reset();
+            }
+        }();
+
+        var reset_sales_preview = function () {
+            // Store the original text
+            var reset = reset_text_to_default("#sales-preview");
+            // Return a function that will destroy the DataTable (allows garbage collection)
+            // and reset the text.
+            return function () {
+                $("#sales-preview table.dataTable").dataTable({ "bRetrieve": true }).fnDestroy();
+                reset();
+            }
+        }();
 
         var import_metadata = $.parseJSON($("#import-metadata").text()) || {};
         var is_valid_product_date = is_valid_date(new Date(import_metadata.lastProductsImportDate));
