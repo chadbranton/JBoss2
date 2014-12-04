@@ -52,13 +52,14 @@
                                 <td>
                                     @Html.ListBox("RoleListBox", ViewBag.Roles as SelectList)
                                 </td>  
-                                <td>
-                                    <input type="submit" value="Assign" />
-                                </td>                                                          
+                                                                                        
                                
                                 <td>                                    
                                     @Html.ListBox("UserRoleListBox", ViewBag.roleList as SelectList)
                                 </td>
+                                <td>
+                                    <input type="submit" value="Assign" />
+                                </td> 
                                     
                            </tr>
                          }
