@@ -30,7 +30,8 @@ namespace JBOFarmersMkt
             bundles.Add(new ScriptBundle("~/bundles/utilities").Include(
                 "~/Scripts/papaparse.js",
                 "~/Scripts/lodash.js",
-                "~/Scripts/forge.bundle.js"));
+                "~/Scripts/forge.bundle.js",
+                "~/Scripts/spin.js"));
 
             // Supports interactive functionality at Import#Index
             bundles.Add(new ScriptBundle("~/bundles/import").Include(

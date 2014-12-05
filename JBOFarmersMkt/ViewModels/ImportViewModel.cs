@@ -69,7 +69,7 @@ namespace JBOFarmersMkt.ViewModels
                     if (!Regex.IsMatch(file.FileName, _r))
                     {
                         var errorMessage = FormatErrorMessage(validationContext.DisplayName +
-                            ". This name does is not consistent with ShopKeep's for this file.");
+                            ". This name is not consistent with ShopKeep's for this type of import.");
                         return new ValidationResult(errorMessage);
                     }
                     else

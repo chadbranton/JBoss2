@@ -366,6 +366,10 @@
     <Compile Include="Migrations\201411220148127_Change Import Model.Designer.cs">
       <DependentUpon>201411220148127_Change Import Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412052045067_TrackNewAndUpdatedCountOnImport.cs" />
+    <Compile Include="Migrations\201412052045067_TrackNewAndUpdatedCountOnImport.Designer.cs">
+      <DependentUpon>201412052045067_TrackNewAndUpdatedCountOnImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -458,6 +462,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\papaparse.js" />
     <Content Include="Scripts\papaparse.min.js" />
+    <Content Include="Scripts\spin.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -655,6 +660,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411220148127_Change Import Model.resx">
       <DependentUpon>201411220148127_Change Import Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412052045067_TrackNewAndUpdatedCountOnImport.resx">
+      <DependentUpon>201412052045067_TrackNewAndUpdatedCountOnImport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
