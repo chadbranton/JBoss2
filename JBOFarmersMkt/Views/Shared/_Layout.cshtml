@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -46,17 +47,12 @@
                     }
                     <li>@Html.ActionLink("Sales", "Index", "Sale")</li>
                     <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
 
                     @if (User.Identity.Name == "admin")
                     {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Imports <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Products", "importProducts", "Import")</li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Import", "Index", "Import")</li>
                     }
 
                 </ul>
@@ -78,42 +74,44 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrapjs")
     @Scripts.Render("~/bundles/datatables")
-
+    @Scripts.Render("~/bundles/utilities")
 
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
         // Have MVC Unobtrusive validation play nice with Bootstrap styles
         // See:  http://stackoverflow.com/a/14650921
-        jQuery.validator.setDefaults({
-            highlight: function (element, errorClass, validClass) {
-                if (element.type === 'radio') {
-                    this.findByName(element.name).addClass(errorClass).removeClass(validClass);
-                } else {
-                    $(element).addClass(errorClass).removeClass(validClass);
-                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        if (jQuery.validator) {
+            jQuery.validator.setDefaults({
+                highlight: function (element, errorClass, validClass) {
+                    if (element.type === 'radio') {
+                        this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+                    } else {
+                        $(element).addClass(errorClass).removeClass(validClass);
+                        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    }
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    if (element.type === 'radio') {
+                        this.findByName(element.name).removeClass(errorClass).addClass(validClass);
+                    } else {
+                        $(element).removeClass(errorClass).addClass(validClass);
+                        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                    }
                 }
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                if (element.type === 'radio') {
-                    this.findByName(element.name).removeClass(errorClass).addClass(validClass);
-                } else {
-                    $(element).removeClass(errorClass).addClass(validClass);
-                    $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-                }
-            }
-        });
-        $(function () {
-            $("span.field-validation-valid, span.field-validation-error").addClass('help-block');
-            $("div.form-group").has("span.field-validation-error").addClass('has-error');
-            $("div.validation-summary-errors").has("li:visible").addClass("alert alert-block alert-danger");
-
-            $("form").submit(function (e) {
-                // Display validation errors with bootstrap style if there are any
+            });
+            $(function () {
+                $("span.field-validation-valid, span.field-validation-error").addClass('help-block');
+                $("div.form-group").has("span.field-validation-error").addClass('has-error');
                 $("div.validation-summary-errors").has("li:visible").addClass("alert alert-block alert-danger");
-            })
-        })
-    </script>
 
+                $("form").submit(function (e) {
+                    // Display validation errors with bootstrap style if there are any
+                    $("div.validation-summary-errors").has("li:visible").addClass("alert alert-block alert-danger");
+                });
+            });
+        }
+    </script>
+    @MiniProfiler.RenderIncludes();
 </body>
 </html>

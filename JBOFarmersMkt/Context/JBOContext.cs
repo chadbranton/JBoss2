@@ -35,7 +35,53 @@ namespace JBOFarmersMkt.Context
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Membership> Memberships { get; set; }
-      
 
+        // Allow auditing creation and modification of models that implement IAuditedEntity
+        // See: http://benjii.me/2014/03/track-created-and-modified-fields-automatically-with-entity-framework-code-first/
+        // And: http://stackoverflow.com/a/26357308
+        public override int SaveChanges()
+        {
+            var addedAuditedEntities = ChangeTracker.Entries<IAuditedEntity>()
+              .Where(p => p.State == EntityState.Added)
+              .Select(p => p.Entity);
+
+            var modifiedAuditedEntities = ChangeTracker.Entries<IAuditedEntity>()
+              .Where(p => p.State == EntityState.Modified)
+              .Select(p => p.Entity);
+
+            var now = DateTime.UtcNow;
+
+            var currentUsername = HttpContext.Current != null && HttpContext.Current.User != null
+            ? HttpContext.Current.User.Identity.Name
+            : "Anonymous";
+
+            foreach (var added in addedAuditedEntities)
+            {
+                added.CreatedAt = now;
+                added.CreatedBy = currentUsername;
+                added.LastModifiedAt = now;
+                added.LastModifiedBy = currentUsername;
+            }
+
+            foreach (var modified in modifiedAuditedEntities)
+            {
+                modified.LastModifiedAt = now;
+                modified.LastModifiedBy = currentUsername;
+            }
+
+            return base.SaveChanges();
+        }
+
+    }
+
+    // Implementing this interface causes creation and modification information
+    // to be modified appropriately on SaveChanges(). 
+    // Note: There may be a better place to put this.
+    public interface IAuditedEntity
+    {
+        string CreatedBy { get; set; }
+        DateTime CreatedAt { get; set; }
+        string LastModifiedBy { get; set; }
+        DateTime LastModifiedAt { get; set; }
     }
 }
