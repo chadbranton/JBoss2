@@ -26,8 +26,6 @@ namespace JBOFarmersMkt.Controllers
 
         public ActionResult Index()
         {
-
-
             // Get last 5 product hashes
             var productHashes = context.Imports
                 .Where(i => i.type == ImportCategories.Products)
@@ -47,16 +45,14 @@ namespace JBOFarmersMkt.Controllers
                 .Where(i => i.type == ImportCategories.Products)
                 .OrderByDescending(i => i.CreatedAt)
                 .Select(i => i.CreatedAt)
-                .DefaultIfEmpty()
-                .First();
+                .FirstOrDefault();
 
             // Get the date of the most recent sales import
             var lastSalesImportDate = context.Imports
                 .Where(i => i.type == ImportCategories.Sales)
                 .OrderByDescending(i => i.CreatedAt)
                 .Select(i => i.CreatedAt)
-                .DefaultIfEmpty()
-                .First();
+                .FirstOrDefault();
 
             // Send this data to the view for client-side validations
             using (profiler.Step("Store validation data in ViewBag"))
@@ -83,8 +79,8 @@ namespace JBOFarmersMkt.Controllers
         {
             bool allImportsFailed = true;
 
-            ImportUploadStatusViewModel p = new ImportUploadStatusViewModel { name = "products" };
-            ImportUploadStatusViewModel s = new ImportUploadStatusViewModel { name = "sales" };
+            ImportUploadStatusViewModel p = new ImportUploadStatusViewModel { name = "Products" };
+            ImportUploadStatusViewModel s = new ImportUploadStatusViewModel { name = "Sales" };
 
             // Process both fields separately so that if one fails, the user
             // doesn't have to redo the successful one as well.

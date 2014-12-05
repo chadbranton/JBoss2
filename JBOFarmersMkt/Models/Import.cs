@@ -26,6 +26,10 @@ namespace JBOFarmersMkt.Models
         public string filename { get; set; }
         public ImportCategories type { get; set; }
         public string contentHash { get; set; }
+        // Number of new records this import.
+        public int newRecords { get; set; }
+        // Number of updated records this import.
+        public int updatedRecords { get; set; }
 
         [DisplayName("Imported By")]
         public string CreatedBy
@@ -119,7 +123,9 @@ namespace JBOFarmersMkt.Models
                             {
                                 contentHash = contentHash,
                                 type = type,
-                                filename = csv.FileName
+                                filename = csv.FileName,
+                                updatedRecords = results.Item1,
+                                newRecords = results.Item2
                             });
                     }
 

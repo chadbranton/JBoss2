@@ -11,7 +11,9 @@ namespace JBOFarmersMkt.ViewModels
     /// <example> 
     /// Failing products import
     /// <code>
-    ///     ImportUploadStatusViewModel p = new ImportUploadStatusViewModel { name = "products" };
+    ///     // Products is the id of the input and capitalized so that it will
+    ///     // look nice in the success message.
+    ///     ImportUploadStatusViewModel p = new ImportUploadStatusViewModel { name = "Products" };
     ///     p.success = false;
     ///     p.dbErrors.Add("The database did not approve because...");
     /// </code>
@@ -19,7 +21,7 @@ namespace JBOFarmersMkt.ViewModels
     /// <example>
     /// Successful sales import
     /// <code>
-    ///     ImportUploadStatusViewModel s = new ImportUploadStatusViewModel { name = "sales" };
+    ///     ImportUploadStatusViewModel s = new ImportUploadStatusViewModel { name = "Sales" };
     ///     s.success = true;
     ///     s.message = "Successfully imported sales. 120,000 records updated. 12,000 records created.";
     /// </code>
@@ -44,11 +46,11 @@ namespace JBOFarmersMkt.ViewModels
         /// </summary>
         /// <param name="results">A Tuple containing the items updated and created.</param>
         public void FormatSuccessMessage(Tuple<int, int> results, bool insertOnly = false) {
-            string format = "{0} Import complete. {1} items updated. {2} items created.";
+            string format = "{0} import complete. {1} items updated. {2} items created.";
 
             if (insertOnly)
             {
-                format = "{0} Import complete. {2} items created.";
+                format = "{0} import complete. {2} items created.";
             }
 
             message = String.Format(format, name, results.Item1, results.Item2);
