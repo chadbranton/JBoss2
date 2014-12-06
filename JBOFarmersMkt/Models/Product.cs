@@ -63,30 +63,7 @@ namespace JBOFarmersMkt.Models
 
     }
 
-    public class ProductView
-    {
-        // public string productId { get; set; }        
-        public string productCode { get; set; }
-        public string description { get; set; }
-        public string department { get; set; }
-        public string category { get; set; }
-        public string upc { get; set; }
-        public string storeCode { get; set; }
-        public string unitPrice { get; set; }
-        public string discountable { get; set; }
-        public string taxable { get; set; }
-        public string inventoryMethod { get; set; }        
-        public string assignedCost { get; set; }
-        public string quantity { get; set; }
-        public string orderTrigger { get; set; }
-        public string recommendedOrder { get; set; }
-        public string lastSoldDate { get; set; }
-        public string supplier { get; set; }
-        public string liabilityItem { get; set; }
-        public string LRT { get; set; }
-    }
-  
-    public sealed class ProductClassMap : CsvClassMap<ProductView>
+    public sealed class ProductClassMap : CsvClassMap<Product>
     {
         public ProductClassMap()
         {
@@ -99,7 +76,9 @@ namespace JBOFarmersMkt.Models
             Map(m => m.unitPrice).Index(6);
             Map(m => m.discountable).Index(7);
             Map(m => m.taxable).Index(8);
-            Map(m => m.inventoryMethod).Index(9);                      
+            Map(m => m.inventoryMethod).Index(9);
+            // 10 Cost - Ignored
+            // 11 Assigned Cost - Ignored
             Map(m => m.quantity).Index(12);
             Map(m => m.orderTrigger).Index(13);
             Map(m => m.recommendedOrder).Index(14);
@@ -107,6 +86,7 @@ namespace JBOFarmersMkt.Models
             Map(m => m.supplier).Index(16);
             Map(m => m.liabilityItem).Index(17);
             Map(m => m.LRT).Index(18);
+            // 19 Tax - Ignored
         }
     }
 }
