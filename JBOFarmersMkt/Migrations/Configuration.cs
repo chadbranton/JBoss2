@@ -9,7 +9,7 @@ namespace JBOFarmersMkt.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(JBOFarmersMkt.Context.JBOContext context)
