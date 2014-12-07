@@ -16,7 +16,14 @@ namespace JBOFarmersMkt.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
         public virtual Supplier Supplier { get; set; }
-       
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }       
         
     }
 
@@ -80,8 +87,15 @@ namespace JBOFarmersMkt.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public virtual Customer Customer { get; set; }
-
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+       
         public class ExternalLogin
         {
             public string Provider { get; set; }

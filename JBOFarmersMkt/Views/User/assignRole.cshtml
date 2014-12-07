@@ -1,0 +1,95 @@
+﻿@model JBOFarmersMkt.Models.UserProfile
+
+@{
+    ViewBag.Title = "assignRole";
+}
+
+<h2>Assign a Role</h2>
+
+<div class="row">
+    <div class="col-xs-6">
+        @if (Model != null)
+        {
+            <div class="table-responsive">
+                <table style="text-align:center" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Roles Available
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                            <th>
+                                Roles Assigned
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @using (Html.BeginForm("assignRole", "User", FormMethod.Post))
+                         
+                        {
+                            <tr>
+                                <td>
+                                    @Model.UserName
+                                </td>
+                                <td>
+                                    @Model.firstName @Model.lastName
+                                </td>
+                                <td>
+                                    @Model.email
+                                </td> 
+                                <td>
+                                    @Html.ListBox("RoleListBox", ViewBag.Roles as SelectList)
+                                </td>  
+                                                                                        
+                               
+                                <td>                                    
+                                    @Html.ListBox("UserRoleListBox", ViewBag.roleList as SelectList)
+                                </td>
+                                <td>
+                                    <input type="submit" value="Assign" />
+                                </td> 
+                                    
+                           </tr>
+                         }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>There is no data to display</p>
+        }
+    </div>
+</div>
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            // Use a DataTable for product information
+            $("table").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 0 }
+                ],
+                "order": [1, "asc"]
+            })
+        })
+    </script>
+}
+
+
+
+
+

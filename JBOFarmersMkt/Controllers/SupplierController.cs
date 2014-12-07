@@ -16,7 +16,8 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/
-
+        [Authorize(Roles="Administrator, Vendor")]
+       
         public ActionResult Index()
         {
             return View(db.Suppliers.ToList());
@@ -24,7 +25,7 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/Details/5
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id = 0)
         {
             Supplier supplier = db.Suppliers.Find(id);
@@ -42,7 +43,7 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/Create
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -53,6 +54,7 @@ namespace JBOFarmersMkt.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Supplier supplier)
         {
             if (ModelState.IsValid)
@@ -67,7 +69,7 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/Edit/5
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id = 0)
         {
             Supplier supplier = db.Suppliers.Find(id);
@@ -83,6 +85,7 @@ namespace JBOFarmersMkt.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Supplier supplier)
         {
             if (ModelState.IsValid)
@@ -95,6 +98,7 @@ namespace JBOFarmersMkt.Controllers
         }
 
         // View the users currently assigned to the supplier with id
+        [Authorize(Roles = "Administrator")]
         public ActionResult Users(int id = 0)
         {
             Supplier supplier = db.Suppliers.Find(id);
@@ -114,6 +118,7 @@ namespace JBOFarmersMkt.Controllers
         }
 
         // Is this a duplicate of "addAssignment" Chad? 
+        [Authorize(Roles = "Administrator")]
         public ActionResult addUser(int id)
         {
 
@@ -128,6 +133,7 @@ namespace JBOFarmersMkt.Controllers
         }
 
         // Add another user to the supplier from the list of all available users
+        [Authorize(Roles = "Administrator")]
         public ActionResult addAssignment(string supp)
         {
             try
@@ -160,6 +166,7 @@ namespace JBOFarmersMkt.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult deleteAssignment(int id, string supp)
         {
             Supplier supplier = db.Suppliers.Where(s => s.name == supp).Single();
@@ -178,7 +185,7 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // GET: /Supplier/Delete/5
-
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id = 0)
         {
             Supplier supplier = db.Suppliers.Find(id);
@@ -191,7 +198,7 @@ namespace JBOFarmersMkt.Controllers
 
         //
         // POST: /Supplier/Delete/5
-
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

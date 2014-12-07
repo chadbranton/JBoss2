@@ -12,7 +12,7 @@ namespace JBOFarmersMkt.Models
     public class JBODatabase
     {
         JBOContext context = new JBOContext();
-        public void addCustomer(Customer customer, string username)
+        public void addCustomer(Customer customer, string username, UserProfile userProfile)
         {
             Customer c = new Customer
             {
@@ -24,7 +24,8 @@ namespace JBOFarmersMkt.Models
                 zip = customer.zip,
                 phone = customer.phone,
                 email = customer.email,
-                username = username
+                username = username,
+                profile = userProfile
             };
 
             context.Customers.Add(c);

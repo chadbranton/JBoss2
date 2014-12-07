@@ -1,0 +1,136 @@
+﻿@using JBOFarmersMkt.Models;
+@model JBOFarmersMkt.ViewModels.ImportViewModel
+
+@{
+    ViewBag.Title = "Import";
+}
+<!-- This should probably moved to a site stylesheet -->
+<style>
+    input[type=file] {
+        border: none;
+    }
+</style>
+<section class="import">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title</h1>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Display AJAX messages -->
+            <div id="errors" style="display:none;" class="text-center alert alert-danger"></div>
+            <div id="success" style="display:none;" class="text-center alert alert-success"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "import", @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="products">Products</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="file" name="products" id="products" accept=".csv, text/csv" />
+                        <p class="help-block"><em>Reports & Exports > Exports > Stock Items</em></p>
+                        <div id="products-error" class="error-message help-block" style="display:none;"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="form-control-static"><a href="#" class="reset-link" id="reset-products-input">Reset</a></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="sales">Sales</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="file" name="sales" id="sales" accept=".csv, text/csv" />
+                        <p class="help-block"><em>Reports & Exports > Exports > Export Sold Items</em></p>
+                        <div id="sales-error" class="error-message help-block" style="display:none;"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="form-control-static"><a href="#" class="reset-link" id="reset-sales-input">Reset</a></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3 col-sm-offset-4">
+                        <input class="btn btn-primary" type="submit" value="Confirm" disabled="disabled" />
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<section class="preview">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Preview <small>Please note that this information has not yet been processed or saved.</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Products</h2>
+            <div id="product-preview">
+                <p>Choose a product csv file above.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Sales</h2>
+            <div id="sales-preview">
+                <p>Choose a sales csv file above.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/template" id="table-template">
+    <% var d = new Date(file.lastModifiedDate) %>
+
+    <p><%- file.name %> - Last Modified at <%- d.toLocaleTimeString() %> on <%- d.toLocaleDateString() %></p>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <% _.forEach(_.first(rows), function(header_name) { %>
+                    <th><%- header_name %></th>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.forEach(_.rest(rows), function(row) { %>
+                <tr>
+                    <% _.forEach(row, function(value) { %>
+                    <td>
+                        <%- value %>
+                    </td>
+                    <% }); %>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script type="text/template" id="error-template">
+    <p>Error: <%- name %></p>
+    <ul>
+        <% _.forEach(reason, function(r) { %>
+        <li><%- r %></li>
+        <% }); %>
+    </ul>
+</script>
+
+<script type="application/json" id="import-metadata">
+    {
+    "hashes": @Html.Raw(@Json.Encode(@ViewBag.hashes)),
+    "lastProductsImportDate": @Html.Raw(@Json.Encode(@ViewBag.lastProductsImportDate)),
+    "lastSalesImportDate": @Html.Raw(@Json.Encode(@ViewBag.lastSalesImportDate))
+    }
+</script>
+
+@section scripts {
+    @Scripts.Render("~/bundles/import")
+}

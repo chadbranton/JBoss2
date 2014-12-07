@@ -49,10 +49,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.BulkInsert">
+      <HintPath>..\packages\EntityFramework.BulkInsert-ef6.6.0.2.8\lib\Net45\EntityFramework.BulkInsert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.0.0.7\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler, Version=3.1.1.140, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.3.1.1.140\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -205,15 +220,18 @@
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReturnController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\StreamHasher.cs" />
     <Compile Include="Migrations\201408062037094_update.cs" />
     <Compile Include="Migrations\201408062037094_update.Designer.cs">
       <DependentUpon>201408062037094_update.cs</DependentUpon>
@@ -342,6 +360,18 @@
     <Compile Include="Migrations\201408271609398_add orderDetailsToProduct.Designer.cs">
       <DependentUpon>201408271609398_add orderDetailsToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412060410077_Latest.cs" />
+    <Compile Include="Migrations\201412060410077_Latest.Designer.cs">
+      <DependentUpon>201412060410077_Latest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412060448305_LatestUserProfile.cs" />
+    <Compile Include="Migrations\201412060448305_LatestUserProfile.Designer.cs">
+      <DependentUpon>201412060448305_LatestUserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412060547389_ChangeImportModel.cs" />
+    <Compile Include="Migrations\201412060547389_ChangeImportModel.Designer.cs">
+      <DependentUpon>201412060547389_ChangeImportModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -359,10 +389,16 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ImportUploadStatusViewModel.cs" />
+    <Compile Include="ViewModels\ImportViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-JBOFarmersMkt-20140806161905.mdf" />
+    <Content Include="App_Data\aspnet-JBOFarmersMkt-20140806161905_log.ldf">
+      <DependentUpon>aspnet-JBOFarmersMkt-20140806161905.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -406,6 +442,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
+    <Content Include="Scripts\forge.bundle.js" />
+    <Content Include="Scripts\import.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
@@ -420,8 +458,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\papaparse.js" />
+    <Content Include="Scripts\papaparse.min.js" />
+    <Content Include="Scripts\spin.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -479,7 +522,7 @@
     <Content Include="Views\Supplier\Create.cshtml" />
     <Content Include="Views\Supplier\Edit.cshtml" />
     <Content Include="Views\Supplier\Delete.cshtml" />
-    <Content Include="Views\Import\importProducts.cshtml" />
+    <Content Include="Views\Import\Index.cshtml" />
     <Content Include="Views\Supplier\addUser.cshtml" />
     <Content Include="Views\Supplier\Users.cshtml" />
     <Content Include="Views\Supplier\addAssignment.cshtml" />
@@ -509,9 +552,12 @@
     <Content Include="Views\Store\DeptMenu.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\GetUsers.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\assignRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="upload\" />
     <Folder Include="Views\Membership\" />
   </ItemGroup>
@@ -614,6 +660,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408271609398_add orderDetailsToProduct.resx">
       <DependentUpon>201408271609398_add orderDetailsToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412060410077_Latest.resx">
+      <DependentUpon>201412060410077_Latest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412060448305_LatestUserProfile.resx">
+      <DependentUpon>201412060448305_LatestUserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412060547389_ChangeImportModel.resx">
+      <DependentUpon>201412060547389_ChangeImportModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

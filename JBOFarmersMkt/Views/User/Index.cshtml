@@ -1,0 +1,91 @@
+﻿@model IEnumerable<JBOFarmersMkt.Models.UserProfile>
+
+<h2>Registered Users</h2>
+
+
+<section class="products">
+    <div class="row">
+        <header class="col-xs-12 page-header">
+            <h1>@ViewBag.Title</h1>
+        </header>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @if (Model != null)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Username
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                               
+                                <th>
+                                    email
+                                </th>
+                                <th>
+                                    phone
+                                </th>
+                                                               
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.UserId
+                                    </td> 
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>                         
+                                  
+                                    <td>
+                                        @item.firstName @item.lastName
+                                    </td>
+                                    <td>
+                                        @item.email
+                                    </td>
+                                    <td>
+                                        @item.phone
+                                    </td>
+
+                                    <td class="text-center">
+                                        @Html.ActionLink("Assign Role", "assignRole", new { id = item.UserId }, new { @class = "btn btn-primary" })
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p>There is no data to display</p>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            // Use a DataTable for product information
+            $("table").DataTable({
+                "columnDefs": [
+                    { "orderable": false, "targets": 5 }
+                ],
+                "order": [1, "asc"]
+            })
+        })
+    </script>
+}

@@ -28,6 +28,8 @@ namespace JBOFarmersMkt.Models
         public string account { get; set; }
         public string notes { get; set; }
         public string username { get; set; }
+
+        public UserProfile profile { get; set; }
        
     }
 }

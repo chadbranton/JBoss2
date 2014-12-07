@@ -20,7 +20,7 @@ namespace JBOFarmersMkt.Controllers
         [Authorize]
         public ActionResult Index(int? page, string sortBy, int? search, string searchName, string searchSupplier)
         {
-            if (User.Identity.Name != "admin")
+            if (!User.IsInRole("Administrator"))
             {
                 ///<summary>
                 ///
