@@ -67,9 +67,6 @@ namespace JBOFarmersMkt.Migrations
             context.SaveChanges();
 
             // Create some suppliers
-            var joe = context.UserProfiles.First(u => u.UserName == "joe");
-            var chad = context.UserProfiles.First(u => u.UserName == "chad");
-
             Supplier chadsVegetables = new Supplier
                 {
                     name = "Chad's Vegetables",
@@ -94,9 +91,10 @@ namespace JBOFarmersMkt.Migrations
 
             context.SaveChanges();
 
-            // refresh
-            chadsVegetables = context.Suppliers.Find(chadsVegetables.supplierID);
-            joesApples = context.Suppliers.Find(joesApples.supplierID);
+            // Retrieve users
+            var joe = context.UserProfiles.First(u => u.UserName == "joe");
+
+            var chad = context.UserProfiles.First(u => u.UserName == "chad");
 
             // Assign users to suppliers
             if (!chadsVegetables.users.Contains(chad))
@@ -108,9 +106,6 @@ namespace JBOFarmersMkt.Migrations
             {
                 joesApples.users.Add(joe);
             }
-
-            // Save changes
-            context.SaveChanges();
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.

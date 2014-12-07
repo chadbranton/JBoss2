@@ -8,6 +8,10 @@ namespace JBOFarmersMkt.Models
 {
     public class Supplier
     {
+        public Supplier()
+        {
+            users = new List<UserProfile>();
+        }
         public int supplierID { get; set; }
 
         [Required]
